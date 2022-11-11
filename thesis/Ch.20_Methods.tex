@@ -1,1 +1,131 @@
 \chapter{Methods\label{methods}}
+
+\section{RQ}
+
+Research questions
+
+RQ1: What is the response time in server side monolith JavaScript application?
+
+RQ2: What is the response time in server side JavaScript service?
+
+\section{Literature}
+To find out about existing literature related to the case a two phase hybrid search was performed.
+First phase contained a systematic literature review with predefined keywords.
+The seconds phase used snowballing method with one iteration on the literature found on first phase.
+One iteration consisted one back step and one forward step for each final results from phase one.
+
+\subsection{Literature review}
+The first search phase is a literature review to find out relevant literature to the case.
+
+The review was performed in the following steps.
+\begin{enumerate}
+    \item Define the review protocol.
+    \item Search literature based on the protocol.
+    \item Review and analyze each results.
+    \item Combine all the relevant results.
+\end{enumerate}
+
+\subsubsection{Review protocol}
+The search string.
+Golden quadstring???
+
+Results analysis.
+Point system for inclusion/exclusion.
+
+
+\subsubsection{The search}
+We used search string \textbf{SEARCH STRING} in the following search engines.
+\begin{itemize}
+    \item List of search engines
+\end{itemize}
+We found \textbf{X} articles from the search
+
+\subsubsection{Review and analysis}
+Each article was review based on the review criteria. Each criteria was pointed based on the point system.
+
+For reviewing the relevance of the articles each articles title and abstract was reviewed.
+
+\begin{flushleft}
+\begin{tabular}{|c c|} 
+ \hline
+ Criteria & Description \\ [0.5ex] 
+ \hline
+  Cr.1 & JavaScript performance review  \\ 
+  \hline
+  Cr.2 & Node.js performance review  \\ 
+  \hline
+  Cr.3 & Architectural performance review  \\ 
+  \hline
+  Cr.4 & Response time performance review  \\ 
+  \hline
+  Cr.5 & Server side performance review  \\ 
+  \hline
+\end{tabular}
+\end{flushleft}
+
+
+\begin{flushleft}
+\begin{tabular}{|c c|} 
+ \hline
+ Points & Description \\ [0.5ex] 
+ \hline
+  0 & No relevance to the criteria  \\ 
+ \hline
+  0.5 & Some relevance to the criteria \\ 
+ \hline
+ 1 & Relevant to the criteria \\ 
+ \hline
+\end{tabular}
+\end{flushleft}
+
+\textbf{A table of results and total points}
+
+\subsubsection{Final result}
+For the final results only articles with the relevance point at or above \textbf{relevance point threshold} was included.
+
+\subsection{Snowballing - Phase two}
+
+\section{Data}
+% What data was collected?
+To measure the response time of the case module a series of data points were collected from the module.
+The data points were collected from two environments.
+First environment was integrated as a part of the monolith application.
+Second environment contained the module and minimum amount of other functionalities to make it work as service.
+
+The measured data contains run-time information about the module.
+A single data point contains five values. 
+\begin{enumerate}
+    \item Cycle id
+    \item Timestamp id
+    \item System time (in nanoseconds)
+    \item System free memory
+    \item Used process CPU
+\end{enumerate}
+
+The cycle id, system time in nanoseconds, system free memory, and used process CPU.
+The cycle id is unique for each full cycle.
+The memory and CPU usages were collected to ensure that the system had enough resources to operate.
+Data points were collected at the beginning of the application cycle, at the end of the cycle and before and after each third party or internal function call.
+
+For each environment the data was logged to \textit{stdout} stream where it was collected for later analysis.
+Since sometimes the cycle can be interrupted by an error only data points from full cycles were included. A full cycle contains start and end data point of a cycle.
+
+\textbf{Data about how many total data points per environment and how many full cycles}
+
+
+
+
+% What data was included and what excluded? And reasons
+
+% What data sources are used and why?
+
+
+% How data from the modules was collected
+
+% How data was analysed
+
+% How the data can answer the research questions
+
+% How case size (data points) was defined
+
+
