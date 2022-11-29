@@ -1,49 +1,84 @@
 \chapter{Methods\label{methods}}
 
-\section{RQ}
+\section{Research questions}
 
-Research questions
+To find out if there is any significant difference in the server side JavaScript components response time three research questions are defined to answer these questions.
 
-RQ1: What is the response time in server side monolith JavaScript application?
+\begin{itemize}
+    \item RQ1\label{RQ1}: What is the response time of a server side monolith JavaScript application?
+    \item RQ2\label{RQ2}: What is the response time of a server side independent JavaScript service?
+    \item RQ3\label{RQ3}: What is the relation of the response time in different environments?
+\end{itemize}
 
-RQ2: What is the response time in server side JavaScript service?
+The first research question (RQ1) aims to provide data related to the response time of JavaScript component. The component is running as part of the monolith application.
+
+The second research question (RQ2) aims to provide data related to the response time of JavaScript component. The component is running as an independent service.
+
+The third research question (RQ3) provides statistical analysis based on the data provided by the first (RQ1) and second (RQ2) research questions.
 
 \section{Literature}
 To find out about existing literature related to the case a two phase hybrid search was performed.
-First phase contained a systematic literature review with predefined keywords.
+First phase contained a modified systematic literature review with predefined keywords.
 The seconds phase used snowballing method with one iteration on the literature found on first phase.
 One iteration consisted one back step and one forward step for each final results from phase one.
 
 \subsection{Literature review}
 The first search phase is a literature review to find out relevant literature to the case.
 
-The review was performed in the following steps.
+\subsubsection{Review protocol}
+To find out about related research a five step literature review was implemented.
+
 \begin{enumerate}
     \item Define the review protocol.
     \item Search literature based on the protocol.
-    \item Review and analyze each results.
-    \item Combine all the relevant results.
+    \item Filter results by title and meta-data.
+    \item Review findings abstracts by criteria.
+    \item Analyze relevant results.
 \end{enumerate}
 
-\subsubsection{Review protocol}
-The search string.
-Golden quadstring???
+The first step defines the protocol used in the search.
+
+The second step search for the related research based on the protocol.
+
+The third step performs the first analysis of the results to find out relevant research.
+
+The fourth step reviews filtered articles and gives the a quality score.
+
+The fifth steps performs the analysis of the results from the fourth step.
+
+
+
+ search the following key words
+For each search engine we performed search using the following search string: 
 
 Results analysis.
 Point system for inclusion/exclusion.
 
 
 \subsubsection{The search}
-We used search string \textbf{SEARCH STRING} in the following search engines.
+The search was performed on the following search engines: 
 \begin{itemize}
-    \item List of search engines
-\end{itemize}
-We found \textbf{X} articles from the search
+    \item 1. search engine
+    \item ...
+\end{itemize}.
 
-\subsubsection{Review and analysis}
-Each article was review based on the review criteria. Each criteria was pointed based on the point system.
+The search was performed on the title, abstract and meta-data for the following key words: \textbf{KEY\_WORDS}.
+For each search engine we used \textbf{SEARCH\_STRING} to find out related research.
+Only research from years \textbf{YEARS} was included.
 
-For reviewing the relevance of the articles each articles title and abstract was reviewed.
+The search returned \textbf{HITS} hits.
+\textbf{TABLE\_WITH\_RESULTS\_PER\_ENGINE}
+
+
+\subsubsection{Initial filtering}
+The relevance of the each results was analyzed based on the title and meta-data related to the keywords. Each result was given score based on the point system.
+
+\subsubsection{Quality Review}
+Then the quality of found articles from the initial filtering was performed.
+Each article was review based on the review criteria and abstract.
+Each criteria was scored based on the point system.
+
+For reviewing the relevance of the articles each articles abstract was reviewed.
 
 \begin{flushleft}
 \begin{tabular}{|c c|} 
@@ -83,34 +118,52 @@ For reviewing the relevance of the articles each articles title and abstract was
 \subsubsection{Final result}
 For the final results only articles with the relevance point at or above \textbf{relevance point threshold} was included.
 
+The final results with the quality score can be found in the \textbf{TABLE}.
+
+Add tables of results grouped by relevant data, category, relevance score, quality score.
+
 \subsection{Snowballing - Phase two}
+The snowballing method was performed on the final results from phase one.
+The method included 
+\begin{enumerate}
+    \item All references from phase one results.
+    \item Research that used previous steps results as reference.
+    \item The initial filtering was performed on the all found result.
+    \item Each result was review for their quality.
+    \item Final result was analyzed. 
+\end{enumerate}
+
+The result can be found in the \textbf{reference table}.
 
 \section{Data}
 % What data was collected?
-To measure the response time of the case module a series of data points were collected from the module.
+To measure the response time of the case a series of data points were collected from the component.
 The data points were collected from two environments.
 First environment was integrated as a part of the monolith application.
-Second environment contained the module and minimum amount of other functionalities to make it work as service.
+Second environment contained the component and the restful service for communication.
 
 The measured data contains run-time information about the module.
-A single data point contains five values. 
+A single data point contains five values.
 \begin{enumerate}
     \item Cycle id
     \item Timestamp id
     \item System time (in nanoseconds)
     \item System free memory
-    \item Used process CPU
+    \item System total memory
+    \item Used process CPU percentage
 \end{enumerate}
 
-The cycle id, system time in nanoseconds, system free memory, and used process CPU.
-The cycle id is unique for each full cycle.
+The cycle id is unique for each full component cycle.
 The memory and CPU usages were collected to ensure that the system had enough resources to operate.
 Data points were collected at the beginning of the application cycle, at the end of the cycle and before and after each third party or internal function call.
 
-For each environment the data was logged to \textit{stdout} stream where it was collected for later analysis.
-Since sometimes the cycle can be interrupted by an error only data points from full cycles were included. A full cycle contains start and end data point of a cycle.
+For each environment the data was saved at run-time and persisted at the end of each cycle.
+Sometimes the cycle can be interrupted by an error.
+Only data points from full cycles were included.
 
-\textbf{Data about how many total data points per environment and how many full cycles}
+\textbf{Table about how many total data points per environment and how many full cycles}
+
+\textbf{Table containing mean, standard deviation, sample size and standard error for each module, environment and external calls for each environment}
 
 
 
