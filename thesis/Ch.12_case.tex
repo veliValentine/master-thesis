@@ -1,6 +1,50 @@
 \chapter{The Case\label{case}}
+The research studies a server side software component.
+It is written using JavaScript with Node.js.
+The component performance is measured in two different environments.
+One where the component is part of a monolith application.
+In the second environment the components is running as an independent service.
+The component is the same in both environments.
 
-\section{Overview of the module}
-Introduction to the module.
+\section{Overview of the component}
+The component is written in JavaScript using Node.js.
+It's response time is critical to the system.
+The component can not be scaled horizontally.
 
-Appendix A, B and C.
+The component contains four modules.
+Module A, B, C and D.
+Each module performs in sequence.
+The modules and their functionality are independent from their environment.
+
+The \textbf{module A} is the first module in the sequence.
+It starts the cycle and is always performed.
+It makes four external calls.
+
+The \textbf{module B} is the second module in the sequence.
+It runs after \textbf{module A}.
+The \textbf{module B} makes one external call.
+
+The \textbf{module C} is the third module in the sequence.
+It is run after \textbf{module B} and when response from \textbf{module B} triggers it.
+It makes four external calls.
+
+The \textbf{module D} is the final module in the sequence.
+It is run after the module C runs.
+It makes one external call.
+
+When any of the modules fails to perform its task an error is raised and the cycle is interrupted.
+When modules are running without errors the modules A and B are always performed. 
+The modules C and D are run only when the data from \textbf{module B} triggers them.
+Each module waits for the response of every external call before continuing their process.
+
+\section{Monolith overview}
+The monolith uses Node.js version 14.19.1. The node version runs using V8 engine version \textit{8.4.371.23-node.85}.
+
+The monolith application is a three tier application containing user interface, server side and database.
+The server side contains four components.
+One of the components is the component studied in this research.
+
+\section{The independent service}
+The independent service uses Node.js version 14.18.3. The node version runs using the v8 engine version \textit{8.4.371.23-node.85}.
+
+The service contains only the component studied in this research and some functionality that allows communication with the component.

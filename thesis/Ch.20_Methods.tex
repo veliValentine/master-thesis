@@ -1,9 +1,8 @@
 \chapter{Methods\label{methods}}
+Three research questions and a hypothesis are defined to find out if there is any significant difference to response times of a server side JavaScript component in different environments.
+To answer these questions data is collected from the component and a hybrid literature review is performed.
 
 \section{Research questions}
-
-To find out if there is any significant difference in the server side JavaScript components response time three research questions are defined to answer these questions.
-
 \begin{itemize}
     \item RQ1\label{RQ1}: What is the response time of a server side monolith JavaScript application?
     \item RQ2\label{RQ2}: What is the response time of a server side independent JavaScript service?
@@ -16,8 +15,22 @@ The second research question (RQ2) aims to provide data related to the response 
 
 The third research question (RQ3) provides statistical analysis based on the data provided by the first (RQ1) and second (RQ2) research questions.
 
+\section{Hypothesis}
+To test if there is statistical difference in the response times we provide the following hypothesis.
+
+Null hypothesis \textbf{H0} says that there is no difference in the response times in the different environments.
+
+\textbf{H0}\label{H0}: $t_1=t_2$.
+
+Our alternative hypothesis \textbf{H1} says that the response time in the independent service is smaller than the response time in the monolith application.
+
+\textbf{H1}\label{H1}: $t_1>t_2$.
+
+$t_1$ is the response time of the component as a part of a monolith application. 
+$t_2$ is the response time of the component in independent service.
+
 \section{Literature}
-To find out about existing literature related to the case a two phase hybrid search was performed.
+To find existing literature related to the research a two phase hybrid literature search was performed.
 First phase contained a modified systematic literature review with predefined keywords.
 The seconds phase used snowballing method with one iteration on the literature found on first phase.
 One iteration consisted one back step and one forward step for each final results from phase one.
@@ -42,18 +55,9 @@ The second step search for the related research based on the protocol.
 
 The third step performs the first analysis of the results to find out relevant research.
 
-The fourth step reviews filtered articles and gives the a quality score.
+The fourth step reviews filtered articles and gives them a quality score.
 
 The fifth steps performs the analysis of the results from the fourth step.
-
-
-
- search the following key words
-For each search engine we performed search using the following search string: 
-
-Results analysis.
-Point system for inclusion/exclusion.
-
 
 \subsubsection{The search}
 The search was performed on the following search engines: 
@@ -142,7 +146,7 @@ The data points were collected from two environments.
 First environment was integrated as a part of the monolith application.
 Second environment contained the component and the restful service for communication.
 
-The measured data contains run-time information about the module.
+The measured data contains run-time information about the component.
 A single data point contains five values.
 \begin{enumerate}
     \item Cycle id
@@ -173,7 +177,7 @@ Only data points from full cycles were included.
 % What data sources are used and why?
 
 
-% How data from the modules was collected
+% How data from the component was collected
 
 % How data was analysed
 
