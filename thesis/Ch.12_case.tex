@@ -1,36 +1,40 @@
 \chapter{The Case\label{case}}
-The research studies a server side software component.
-It is written using JavaScript with Node.js.
+% Johdanto
+\section{Tiivistelmä}
+This research studies performance of a server side JavaScript software component.
+Component is written using JavaScript with Node.js.
 The component performance is measured in two different environments.
-One where the component is part of a monolith application.
-In the second environment the components is running as an independent service.
-The component is the same in both environments.
+We define performance as components response time.
+Two environments are one where the component is a part of a monolith application.
+Other where the components is running as an independent service.
+The component is not modified between environments.
 
 \section{Overview of the component}
 The component is written in JavaScript using Node.js.
-It's response time is critical to the system.
+It's response time is critical to the application.
 The component can not be scaled horizontally.
 
 The component contains four modules.
 Module A, B, C and D.
-Each module performs in sequence.
-The modules and their functionality are independent from their environment.
+Some modules are dependent on external data.
+Data fetching for these modules are excluded from the performance review.
+Modules run in cycles.
+One full cycle contains all modules from A to D.
+Modules are run in sequence.
 
 The \textbf{module A} is the first module in the sequence.
-It starts the cycle and is always performed.
-It makes four external calls.
+It starts the cycle.
+It is always called.
 
 The \textbf{module B} is the second module in the sequence.
 It runs after \textbf{module A}.
-The \textbf{module B} makes one external call.
+It is always called.
 
 The \textbf{module C} is the third module in the sequence.
-It is run after \textbf{module B} and when response from \textbf{module B} triggers it.
-It makes four external calls.
+It is run after \textbf{module B} only when response from \textbf{module B} triggers it.
 
 The \textbf{module D} is the final module in the sequence.
-It is run after the module C runs.
-It makes one external call.
+It is run always after \textbf{module C} runs.
 
 When any of the modules fails to perform its task an error is raised and the cycle is interrupted.
 When modules are running without errors the modules A and B are always performed. 
@@ -43,8 +47,10 @@ The monolith uses Node.js version 14.19.1. The node version runs using V8 engine
 The monolith application is a three tier application containing user interface, server side and database.
 The server side contains four components.
 One of the components is the component studied in this research.
+The component is run independently from other components.
 
 \section{The independent service}
-The independent service uses Node.js version 14.18.3. The node version runs using the v8 engine version \textit{8.4.371.23-node.85}.
+The independent service uses Node.js version 14.18.3.
+The node version runs using the v8 engine version \textit{8.4.371.23-node.85}.
 
-The service contains only the component studied in this research and some functionality that allows communication with the component.
+The service contains the component studied in this research and some functionality that allows communication with the component.
