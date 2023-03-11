@@ -1,4 +1,61 @@
 \chapter{Results\label{results}}
+Intro to results chapter
+
+\section{Data}
+Data from monolith and single service.
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|c|c|c|c|c|} 
+        \hline
+        Environment
+        & Count (n)
+        & Mean (ms)
+        & Median (ms)
+        & Min (ms)
+        & Max (ms) \\ [0.5ex] 
+        
+        \hline\hline
+        Monolith
+        & 1649
+        & 198.747024...
+        & 184.522865...
+        & 80.201486...
+        & 1180.642508... \\ 
+        
+        Independent Service
+        & 2088
+        & 105.660088...
+        & 80.588923...
+        & 26.945697...
+        & 628.904505... \\
+        \hline
+    \end{tabular}
+    \caption{Table for response time results.}
+    \label{table:1}
+\end{table}
+
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|c|c|c|c|c|} 
+        \hline
+        Environment
+        & Standard Deviation (ms)
+        & Standard Error (ms) \\ [0.5ex] 
+        
+        \hline\hline
+        Monolith
+        & 85.409388...
+        & 2.103271... \\ 
+        
+        Independent Service
+        & 86.727126...
+        & 1.897972... \\ 
+         \hline
+    \end{tabular}
+    \caption{Table for response time results.}
+    \label{table:1}
+\end{table}
+
+
+\section{Notes}
 Description of the measurement, setup and data collection
 
 Data results from each step.
