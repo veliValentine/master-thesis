@@ -66,7 +66,13 @@ The search was performed on the following search engines:
     \item ...
 \end{itemize}.
 
-The search was performed on the title, abstract and meta-data for the following key words: \textbf{KEY\_WORDS}.
+The search was performed on the title, abstract and meta-data for the following key words:
+\begin{itemize}
+    \item word1
+    \item word2
+    \item ...
+\end{itemize}.
+
 For each search engine we used \textbf{SEARCH\_STRING} to find out related research.
 Only research from years \textbf{YEARS} was included.
 
@@ -82,7 +88,7 @@ Then the quality of found articles from the initial filtering was performed.
 Each article was review based on the review criteria and abstract.
 Each criteria was scored based on the point system.
 
-For reviewing the relevance of the articles each articles abstract was reviewed.
+For reviewing the relevance of the articles each abstract was reviewed.
 
 \begin{flushleft}
 \begin{tabular}{|c c|} 
@@ -131,20 +137,20 @@ The snowballing method was performed on the final results from phase one.
 The method included 
 \begin{enumerate}
     \item All references from phase one results.
-    \item Research that used previous steps results as reference.
+    \item Articles that referred previous steps results.
     \item The initial filtering was performed on the all found result.
-    \item Each result was review for their quality.
-    \item Final result was analyzed. 
+    \item Each result were review for their quality.
+    \item Final result were analyzed. 
 \end{enumerate}
 
 The result can be found in the \textbf{reference table}.
 
 \section{Data}
 % What data was collected?
-To measure the response time of the case a series of data points were collected from the component.
+To measure the response time of the component a series of data points were collected.
 The data points were collected from two environments.
-First environment was integrated as a part of the monolith application.
-Second environment contained the component and the restful service for communication.
+In first environment the component was integrated as a part of monolith application.
+Second environment contained the component and the needed component for communication with the component.
 
 The measured data contains run-time information about the component.
 A single data point contains five values.
@@ -157,13 +163,14 @@ A single data point contains five values.
     \item Used process CPU percentage
 \end{enumerate}
 
-The cycle id is unique for each full component cycle.
+The cycle id is unique for each cycle.
 The memory and CPU usages were collected to ensure that the system had enough resources to operate.
 Data points were collected at the beginning of the application cycle, at the end of the cycle and before and after each third party or internal function call.
 
 For each environment the data was saved at run-time and persisted at the end of each cycle.
-Sometimes the cycle can be interrupted by an error.
-Only data points from full cycles were included.
+Sometimes the cycle was interrupted by an error or the collected data was not complete.
+Only valid data was analyzed.
+Valid data contains data from full cycle excluding all error cases,
 
 \textbf{Table about how many total data points per environment and how many full cycles}
 
