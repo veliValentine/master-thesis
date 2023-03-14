@@ -1,35 +1,50 @@
 \chapter{Results\label{results}}
 Intro to results chapter
 
-\section{Data}
-Data from monolith and single service.
+\section{Sample Data}
+Sample from monolith and independent service.
 \begin{table}[h!]
-    \begin{tabular}{|c|c|c|c|c|c|c|c|} 
+    \begin{tabular}{|c|c|c|c|c|} 
         \hline
         Environment
         & Count (n)
-        & Mean (ms)
-        & Median (ms)
-        & Min (ms)
-        & Max (ms) \\ [0.5ex] 
+        & Mean (ns)
+        & Median (ns) \\ [0.5ex] 
         
         \hline\hline
         Monolith
         & 1649
-        & 198.747024...
-        & 184.522865...
-        & 80.201486...
-        & 1180.642508... \\ 
+        & $198.747024... \cdot 10^6$
+        & $184.522865... \cdot 10^6$\\ 
         
         Independent Service
         & 2088
-        & 105.660088...
-        & 80.588923...
-        & 26.945697...
-        & 628.904505... \\
+        & $105.660088... \cdot 10^6$
+        & $80.588923... \cdot 10^6$ \\
         \hline
     \end{tabular}
-    \caption{Table for response time results.}
+    \caption{Table for response time sample results.}
+    \label{table:1}
+\end{table}
+
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|} 
+        \hline
+        Environment
+        & Min (ns)
+        & Max (ns) \\ [0.5ex] 
+        
+        \hline\hline
+        Monolith
+        & $80.201486... \cdot 10^6$
+        & $1180.642508... \cdot 10^6$ \\ 
+        
+        Independent Service
+        & $26.945697... \cdot 10^6$
+        & $628.904505... \cdot 10^6$ \\
+        \hline
+    \end{tabular}
+    \caption{Table for response time sample results.}
     \label{table:1}
 \end{table}
 
@@ -37,23 +52,68 @@ Data from monolith and single service.
     \begin{tabular}{|c|c|c|c|c|c|c|c|} 
         \hline
         Environment
-        & Standard Deviation (ms)
-        & Standard Error (ms) \\ [0.5ex] 
+        & Standard Deviation (ns)
+        & Standard Error (ns) \\ [0.5ex] 
         
         \hline\hline
         Monolith
-        & 85.409388...
-        & 2.103271... \\ 
+        & $85.409388... \cdot 10^6$
+        & $2.103271... \cdot 10^6$ \\ 
         
         Independent Service
-        & 86.727126...
-        & 1.897972... \\ 
+        & $86.727126... \cdot 10^6$
+        & $1.897972... \cdot 10^6$ \\ 
          \hline
     \end{tabular}
-    \caption{Table for response time results.}
+    \caption{Table for response time sample results.}
     \label{table:1}
 \end{table}
 
+Analysis from the data...
+
+\section{Significance Tests}
+Let $\mu_m$ be the mean response time of the component in the monolith and $\mu_i$ be the mean response time of the component in independent service.
+To see if the data is sufficient enough to prove that $\mu_i > \mu_m$ a one sided Z test is performed with null hypothesis \textbf{H0}: $\mu_m \leq \mu_i$ against the alternative hypothesis \textbf{H1}: $\mu_m > \mu_i$.
+
+When $\overline{x}_m$ is the sample mean, $S_m^2$ the sample variance and $n_m$ the sample size in the monolith 
+and $\overline{x}_i$ the sample mean, $S_i^2$ sample variance and $n_i$ the sample size in the independent service.
+The value of test statistic $TS$ is
+\[
+TS=\frac{\overline{x}_m-\overline{x}_i}{\sqrt{\frac{S_m^2}{n_m}+\frac{S_i^2}{n_i}}}
+\]
+\[
+TS=32.857757...
+ \].
+
+
+\subsection{ST notes}
+Two sample Z test
+
+$\alpha=0.05$, 5\% alpha level. Use $1$, $5$ and $10$.
+
+\textbf{H0} $\mu_x \leq \mu_y$
+
+\textbf{H1} $\mu_x > \mu_y$
+
+$\mu$ odotusarvo aka. population mean
+
+$\overline{x}$ mean
+
+$\sigma^2$ variance. Variance is $\sigma$ standard deviation in power of two.
+
+$TS=\dfrac{\overline{x}-\overline{y}}{\sqrt{\frac{S_x^2}{n}+\frac{S_y^2}{m}}}$
+
+$\overline{x}$ is the sample mean
+
+$\overline{y}$ is the sample mean
+
+$S_x^2$ is sample variance
+
+$S_y^2$ is sample variance
+
+Reject \textbf{H0} if $TS\geq Z_{a}$
+
+$p=P(Z \geq v)$, where $v$ is same as TS. When $p>\alpha$ \textbf{H0} can not be rejected.
 
 \section{Notes}
 Description of the measurement, setup and data collection

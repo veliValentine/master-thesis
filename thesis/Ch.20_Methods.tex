@@ -16,18 +16,14 @@ The second research question (RQ2) aims to provide data related to the response 
 The third research question (RQ3) provides statistical analysis based on the data provided by the first (RQ1) and second (RQ2) research questions.
 
 \section{Hypothesis}
-To test if there is statistical difference in the response times we provide the following hypothesis.
+In order to test if there is statistical difference between response times in different environments a one sided Z hypothesis test is performed.
+Hypothesis test contains null hypothesis \textbf{H0} and alternative hypothesis \textbf{H1}.
 
-Null hypothesis \textbf{H0} says that there is no difference in the response times in the different environments.
+\textbf{H0}\label{H0}: $\mu_1\le\mu_2$
 
-\textbf{H0}\label{H0}: $t_1=t_2$.
+\textbf{H1}\label{H1}: $\mu_1>\mu_2$
 
-Our alternative hypothesis \textbf{H1} says that the response time in the independent service is smaller than the response time in the monolith application.
-
-\textbf{H1}\label{H1}: $t_1>t_2$.
-
-$t_1$ is the response time of the component as a part of a monolith application. 
-$t_2$ is the response time of the component in independent service.
+Where $\mu_1$ is the mean response time of the component as a part of a monolith application and $\mu_2$ is the mean response time of the component in independent service.
 
 \section{Literature}
 To find existing literature related to the research a two phase hybrid literature search was performed.
