@@ -82,38 +82,17 @@ The value of test statistic $TS$ is
 TS=\frac{\overline{x}_m-\overline{x}_i}{\sqrt{\frac{S_m^2}{n_m}+\frac{S_i^2}{n_i}}}
 \]
 \[
-TS=32.857757...
+TS=32.857757... \approx 32.858
  \].
+ 
+With one sided Z test the null hypothesis \textbf{H0} will be rejected when the $p$ value 
+equals the probability that a standard normal is as large as $TS$. Calculating the $p$ value we get
+\[
+\text{p value} = P\{Z\geq TS\} \approx P\{Z\geq 32.858\} \leq P\{Z\geq 3.49\} = 0.0002
+\].
+Since the $p$ value is at least $0.0002$ the null hypothesis \textbf{H0} can be rejected with any significance level above $0.02\%$. % It doesn't  make any sense
 
-
-\subsection{ST notes}
-Two sample Z test
-
-$\alpha=0.05$, 5\% alpha level. Use $1$, $5$ and $10$.
-
-\textbf{H0} $\mu_x \leq \mu_y$
-
-\textbf{H1} $\mu_x > \mu_y$
-
-$\mu$ odotusarvo aka. population mean
-
-$\overline{x}$ mean
-
-$\sigma^2$ variance. Variance is $\sigma$ standard deviation in power of two.
-
-$TS=\dfrac{\overline{x}-\overline{y}}{\sqrt{\frac{S_x^2}{n}+\frac{S_y^2}{m}}}$
-
-$\overline{x}$ is the sample mean
-
-$\overline{y}$ is the sample mean
-
-$S_x^2$ is sample variance
-
-$S_y^2$ is sample variance
-
-Reject \textbf{H0} if $TS\geq Z_{a}$
-
-$p=P(Z \geq v)$, where $v$ is same as TS. When $p>\alpha$ \textbf{H0} can not be rejected.
+Since the null hypothesis \textbf{H0} was rejected in favor of the alternative hypothesis \textbf{H1} we can say that the mean response time in the monolith is statistically slower than the mean response time in the single service.
 
 \section{Notes}
 Description of the measurement, setup and data collection
