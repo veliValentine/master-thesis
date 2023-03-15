@@ -2,54 +2,150 @@
 Intro to results chapter
 
 \section{Sample Data}
-Sample from monolith and independent service.
+Performance samples were collected from the component in both environments over two month period.
+In order to capture the components performance only full cycles without errors were included in the analysis.
+Partial cycles and full cycles with errors were excluded since the performance in these cases was irrelevant to the system.
+The response time results are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}. Hardware samples are shown in tables \ref{table:hardware results:monolith:1} and \ref{table:hardware results:independent service:1}.
+
+\subsubsection{Hardware}
+Hardware samples were collected along each cycle to make sure that the components response time was not limited by the used hardware.
+Only samples from full cycles without errors were included.
+The results for monolith are shown in table \ref{table:hardware results:monolith:1} and in table \ref{table:hardware results:independent service:1} the results for independent service
+In the monolith environment $206965$ hardware samples was collected from $1649$ full cycles and from the independent service a total of $235183$ hardware samples was collected from $2088$ full cycle.
+The hardware samples were collected at the same time as response time timestamp were collected.
+Hardware samples only reflects the hardware status at the point of the timestamp collection and not the status during any meaningful process in the component.
+
 \begin{table}[h!]
-    \begin{tabular}{|c|c|c|c|c|} 
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        Monolith
+        & CPU (\%)
+        & Free Memory (Gigabytes)
+        & Total Memory (Gigabytes) \\ [0.5ex] 
+        
+        \hline\hline
+        Mean
+        & 25.0
+        & 7.588166...
+        & 64.265863... \\ 
+        
+        Median
+        & 22.0
+        & 3.699269...
+        & 64.265863... \\ 
+
+        Minimum
+        & 6.0
+        & 0.391187...
+        & 64.265863... \\ 
+        
+        Maximum
+        & 36.0
+        & 55.782023...
+        & 64.265863... \\
+        \hline
+    \end{tabular}
+    \caption{Hardware Utilization - Monolith $n=206 965$}
+    \label{table:hardware results:monolith:1}
+\end{table}
+
+Collected hardware sample shows the systems CPU utilization percentage.
+The CPU utilization percentage was calculated as
+\[
+\text{Utilization percentage} = 100 \cdot \frac{\text{Available CPU}}{\text{Total CPU}}
+.\]
+Where the available CPU is the number of milliseconds the system has spend in the user mode and the total CPU is the sum of milliseconds the system has spend on user, system and idle modes.
+
+Collected samples shows that the CPU utilization percentage didn't have any noted effect on the performance since the maximum CPU utilization was at $36.0\%$ in the monolith environment and $1.0\%$ in the independent service.
+Leaving most of the available CPU available to the application process.
+The mean CPU utilization in the monolith is 24 percentage points higher compared to the mean CPU utilization in the independent service.
+
+
+The collected hardware samples doesn't show out of memory errors since these would interrupt the cycle. 
+
+
+\subsubsection{Response Time}
+\begin{table}[h!]
+       \begin{tabular}{|c|c|c|c|} 
+        \hline
+        Independent Service
+        & CPU (\%)
+        & Free Memory (Gigabytes)
+        & Total Memory (Gigabytes) \\ [0.5ex] 
+        
+        \hline\hline
+        Mean
+        & 1.0
+        & 2.640327...
+        & 4.089143... \\ 
+        
+        Median
+        & 1.0
+        & 2.576351...
+        & 4.072448... \\ 
+
+        Minimum
+        & 1.0
+        & 2.513269...
+        & 4.072448...\\ 
+        
+        Maximum
+        & 1.0
+        & 3.058026...
+        & 4.133356... \\
+        \hline
+    \end{tabular}
+    \caption{Hardware Utilization - Independent Service $n=235183$}
+    \label{table:hardware results:independent service:1}
+\end{table}
+
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|c|} 
         \hline
         Environment
         & Count (n)
-        & Mean (ns)
-        & Median (ns) \\ [0.5ex] 
+        & Mean (ms)
+        & Median (ms) \\ [0.5ex] 
         
         \hline\hline
         Monolith
         & 1649
-        & $198.747024... \cdot 10^6$
-        & $184.522865... \cdot 10^6$\\ 
+        & 198.747024...
+        & 184.522865...\\ 
         
         Independent Service
         & 2088
-        & $105.660088... \cdot 10^6$
-        & $80.588923... \cdot 10^6$ \\
+        & 105.660088...
+        & 80.588923... \\
         \hline
     \end{tabular}
-    \caption{Table for response time sample results.}
-    \label{table:1}
+    \caption{Results for response time samples. Timestamps are in milliseconds.}
+    \label{table:response time results:1}
 \end{table}
 
 \begin{table}[h!]
     \begin{tabular}{|c|c|c|} 
         \hline
         Environment
-        & Min (ns)
-        & Max (ns) \\ [0.5ex] 
+        & Min (ms)
+        & Max (ms) \\ [0.5ex] 
         
         \hline\hline
         Monolith
-        & $80.201486... \cdot 10^6$
-        & $1180.642508... \cdot 10^6$ \\ 
+        & 80.201486... 
+        & 1180.642508... \\ 
         
         Independent Service
-        & $26.945697... \cdot 10^6$
-        & $628.904505... \cdot 10^6$ \\
+        & 26.945697... 
+        & 628.904505...  \\
         \hline
     \end{tabular}
-    \caption{Table for response time sample results.}
-    \label{table:1}
+    \caption{Results for response time samples. Timestamps are in milliseconds.}
+    \label{table:response time results:2}
 \end{table}
 
 \begin{table}[h!]
-    \begin{tabular}{|c|c|c|c|c|c|c|c|} 
+    \begin{tabular}{|c|c|c|} 
         \hline
         Environment
         & Standard Deviation (ns)
@@ -65,15 +161,20 @@ Sample from monolith and independent service.
         & $1.897972... \cdot 10^6$ \\ 
          \hline
     \end{tabular}
-    \caption{Table for response time sample results.}
-    \label{table:1}
+    \caption{Results for response time samples. Timestamps are in nanoseconds.}
+    \label{table:response time results:3}
 \end{table}
 
-Analysis from the data...
+\subsubsection{Summary}
+Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
+The component performance was not limited by the hardware according to hardware utilization data.
+To see if there is statistically relevant difference in the components response time a significance test was performed.
 
 \section{Significance Tests}
+To determine if the response time in monolith environment is statistically slower than the response time in single service a two sample significance test was performed.
+
 Let $\mu_m$ be the mean response time of the component in the monolith and $\mu_i$ be the mean response time of the component in independent service.
-To see if the data is sufficient enough to prove that $\mu_i > \mu_m$ a one sided Z test is performed with null hypothesis \textbf{H0}: $\mu_m \leq \mu_i$ against the alternative hypothesis \textbf{H1}: $\mu_m > \mu_i$.
+To see if the data is sufficient enough to prove that $\mu_m > \mu_i$ a one sided Z test is performed with null hypothesis \textbf{H0}: $\mu_m \leq \mu_i$ against the alternative hypothesis \textbf{H1}: $\mu_m > \mu_i$.
 
 When $\overline{x}_m$ is the sample mean, $S_m^2$ the sample variance and $n_m$ the sample size in the monolith 
 and $\overline{x}_i$ the sample mean, $S_i^2$ sample variance and $n_i$ the sample size in the independent service.
@@ -83,39 +184,23 @@ TS=\frac{\overline{x}_m-\overline{x}_i}{\sqrt{\frac{S_m^2}{n_m}+\frac{S_i^2}{n_i
 \]
 \[
 TS=32.857757... \approx 32.858
- \].
+.\]
  
 With one sided Z test the null hypothesis \textbf{H0} will be rejected when the $p$ value 
-equals the probability that a standard normal is as large as $TS$. Calculating the $p$ value we get
+equals the probability that a standard normal is as large as $TS$. Calculating the $p$ value we get % It doesn't  make any sense
 \[
 \text{p value} = P\{Z\geq TS\} \approx P\{Z\geq 32.858\} \leq P\{Z\geq 3.49\} = 0.0002
-\].
-Since the $p$ value is at least $0.0002$ the null hypothesis \textbf{H0} can be rejected with any significance level above $0.02\%$. % It doesn't  make any sense
+.\]
 
-Since the null hypothesis \textbf{H0} was rejected in favor of the alternative hypothesis \textbf{H1} we can say that the mean response time in the monolith is statistically slower than the mean response time in the single service.
+The $p$ value being at least $0.0002$ the null hypothesis \textbf{H0} can be rejected with any significance level above $0.02\%$.
+With common significance levels 1\%, 5\% and 10\% the null hypothesis \textbf{H0} was rejected in favor of the alternative hypothesis \textbf{H1}.
+The mean response time in the monolith is statistically slower than the mean response time in the single service.
 
+%%%% NOTES %%%%
 \section{Notes}
-Description of the measurement, setup and data collection
 
-Data results from each step.
-
-Show it in tables
+Show it in chart
 \begin{itemize}
-    \item All data points
     \item Included data points
-    \item Show
-    \subitem Mean
-    \subitem Standard derivation
-    \subitem Population Size
-    \subitem Sample size
+    \item Data in the table
 \end{itemize}
-
-Statistical analysis
-\begin{itemize}
-    \item confidence intervals
-    \item standard error
-\end{itemize}
-
-Comparison of results in a table
-
-Methods analysis
