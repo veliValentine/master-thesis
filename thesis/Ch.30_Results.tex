@@ -3,17 +3,18 @@ Intro to results chapter
 
 \section{Sample Data}
 Performance samples were collected from the component in both environments over two month period.
-In order to capture the components performance only full cycles without errors were included in the analysis.
-Partial cycles and full cycles with errors were excluded since the performance in these cases was irrelevant to the system.
+In order to capture the component performance only full cycles without errors were included in the analysis.
+Partial cycles and cycles with errors were excluded from the samples since the performance in these cases was irrelevant to the system.
 The response time results are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}. Hardware samples are shown in tables \ref{table:hardware results:monolith:1} and \ref{table:hardware results:independent service:1}.
 
-\subsubsection{Hardware}
+\subsubsection{Hardware Samples}
 Hardware samples were collected along each cycle to make sure that the components response time was not limited by the used hardware.
 Only samples from full cycles without errors were included.
-The results for monolith are shown in table \ref{table:hardware results:monolith:1} and in table \ref{table:hardware results:independent service:1} the results for independent service
-In the monolith environment $206965$ hardware samples was collected from $1649$ full cycles and from the independent service a total of $235183$ hardware samples was collected from $2088$ full cycle.
-The hardware samples were collected at the same time as response time timestamp were collected.
-Hardware samples only reflects the hardware status at the point of the timestamp collection and not the status during any meaningful process in the component.
+The results for monolith are shown in table \ref{table:hardware results:monolith:1} and for independent service in table \ref{table:hardware results:independent service:1}.
+In the monolith environment $206965$ hardware samples was collected from $1649$ full cycles.
+From the independent service a total of $235183$ hardware samples was collected from $2088$ full cycles.
+The hardware samples were collected along response time timestamp were collected.
+Hardware samples only reflects the CPU utilization and the system memory status at the point of the timestamp collection and not the status during any meaningful process in the component.
 
 \begin{table}[h!]
     \begin{tabular}{|c|c|c|c|} 
@@ -49,20 +50,29 @@ Hardware samples only reflects the hardware status at the point of the timestamp
     \label{table:hardware results:monolith:1}
 \end{table}
 
-Collected hardware sample shows the systems CPU utilization percentage.
+Collected hardware samples shows the systems CPU utilization percentage.
 The CPU utilization percentage was calculated as
 \[
-\text{Utilization percentage} = 100 \cdot \frac{\text{Available CPU}}{\text{Total CPU}}
+\textit{Utilization percentage} = 100 \cdot \frac{\textit{Available CPU}}{\textit{Total CPU}}
 .\]
-Where the available CPU is the number of milliseconds the system has spend in the user mode and the total CPU is the sum of milliseconds the system has spend on user, system and idle modes.
+Where the available CPU is the number of milliseconds the system has spend in the user mode.
+The total CPU is the sum of milliseconds the system has spend on user, system and idle modes. The CPU utilization is shown in tables \ref{table:hardware results:monolith:1} and \ref{table:hardware results:independent service:1}.
 
 Collected samples shows that the CPU utilization percentage didn't have any noted effect on the performance since the maximum CPU utilization was at $36.0\%$ in the monolith environment and $1.0\%$ in the independent service.
-Leaving most of the available CPU available to the application process.
+Leaving most of the CPU available to the application process.
 The mean CPU utilization in the monolith is 24 percentage points higher compared to the mean CPU utilization in the independent service.
 
-
-The collected hardware samples doesn't show out of memory errors since these would interrupt the cycle. 
-
+Collected hardware samples contained information about the free memory and the total available memory for the system.
+In table \ref{table:hardware results:monolith:1} the memory data is shown for the monolith application and in table \ref{table:hardware results:independent service:1} for the independent service.
+The minimum available memory for the system in monolith was around $0.609...\%$ and in independent service around $60.805...\%$.
+These benchmarks was calculated using the following formula
+\[
+\textit{Minimum available memory} = 100 \cdot \frac{\textit{Minimum free memory}}{\textit{Maximum total memory}}
+.\]
+It is possible that the system would run out of memory.
+Out of memory cycles are not shown in samples since the system would raise out of memory exception ending the cycle.
+The collected memory samples doesn't show out of memory errors since error cases were excluded from the analysis.
+The mean available memory was around $11.807...\%$ in monolith and $64.569...\%$ in independent service leaving plenty of memory for the application use.
 
 \subsubsection{Response Time}
 \begin{table}[h!]
