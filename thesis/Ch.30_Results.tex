@@ -72,9 +72,32 @@ These benchmarks was calculated using the following formula
 It is possible that the system would run out of memory.
 Out of memory cycles are not shown in samples since the system would raise out of memory exception ending the cycle.
 The collected memory samples doesn't show out of memory errors since error cases were excluded from the analysis.
-The mean available memory was around $11.807...\%$ in monolith and $64.569...\%$ in independent service leaving plenty of memory for the application use.
+The mean available memory was around $11.807...\%$ in monolith and $64.569...\%$ in independent service leaving plenty of memory available for the application use.
 
 \subsubsection{Response Time}
+Timestamp samples were collected from both environments to measure the response time of the component.
+The results are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}.
+From each cycle start and end timestamps was collected.
+Also before and after timestamps were collected for each cycle on all external calls made from the component.
+The response time for a cycle was calculated with the following formula
+\begin{gather*}
+\textit{ResponseTime}_n
+\\ =\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
+\\ = \textit{cycleEndTimestamp}_n - \textit{cycleStartTimestamp}_n - 
+    \sum_{i=1}^{\textit{m}} (\textit{afterExternalCall}_{ni} -     \textit{beforeExternalCall}_{ni}),
+\end{gather*}
+where $n$ is the nth cycle from samples and $m$ is the made external calls for the cycle.
+The timestamps were persisted after each cycle.
+
+Collected samples contained $1649$ full cycles from monolith and $2088$ full cycles from independent service.
+Mean response time in monolith was $\sim198.7$ms and $\sim105.6$ms in independent service.
+In the monolith the mean value was $\sim2.48$ times faster against the minimum value and $\sim5.94$ slower when compared to the maximum value of the environment.
+In the independent service the mean value was $\sim3.92$ times slower compared to the minimum value and $\sim5.95$ times faster compared to the maximum value of the environment.
+
+Mean response time in independent service was $\sim1.88$ times faster when compared to the mean response time of the monolith.
+While the difference between maximum value and mean value for both environments was quite close to each other, less than $\sim1.2$ percentage points, the difference with mean and minimum value was much bigger.
+The difference between mean value and minimum value for both environments was $\sim144.31$ percentage points.
+
 \begin{table}[h!]
        \begin{tabular}{|c|c|c|c|} 
         \hline
@@ -176,8 +199,11 @@ The mean available memory was around $11.807...\%$ in monolith and $64.569...\%$
 \end{table}
 
 \subsubsection{Summary}
-Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
 The component performance was not limited by the hardware according to hardware utilization data.
+Most of the systems CPU was unused and average of at leas $11.8\%$ free memory available for the system.
+
+The response time being $\sim1.88$ times faster in independent service when compared to monolith environment.
+Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
 To see if there is statistically relevant difference in the components response time a significance test was performed.
 
 \section{Significance Tests}
