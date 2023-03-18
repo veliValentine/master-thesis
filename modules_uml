@@ -1,1 +1,72 @@
-<mxfile host="app.diagrams.net" modified="2023-03-18T12:53:11.167Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" version="21.0.8" etag="R_wP5TVh-1jWtCxBXDqi" type="github"><diagram name="Page-1" id="IC5Zh8oBeFv_FQig05HL">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-03-18T13:19:25.261Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="q41w_jdCrxj1yqYJ27Wa" version="21.0.8" type="github">
+  <diagram name="Page-1" id="IC5Zh8oBeFv_FQig05HL">
+    <mxGraphModel dx="1877" dy="1710" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" width="310" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-8" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="20" width="200" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-2" value="&lt;h1&gt;Component&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="105" y="20" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gICo3RTBHbkObXQK2Jzr-3" target="gICo3RTBHbkObXQK2Jzr-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="110" />
+              <mxPoint x="390" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-3" value="Module A" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-4" value="Module B" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gICo3RTBHbkObXQK2Jzr-5" target="gICo3RTBHbkObXQK2Jzr-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="290" />
+              <mxPoint x="380" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gICo3RTBHbkObXQK2Jzr-5" target="gICo3RTBHbkObXQK2Jzr-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="290" />
+              <mxPoint x="90" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-5" value="Module C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gICo3RTBHbkObXQK2Jzr-6" target="gICo3RTBHbkObXQK2Jzr-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="380" />
+              <mxPoint x="390" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gICo3RTBHbkObXQK2Jzr-6" target="gICo3RTBHbkObXQK2Jzr-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-6" value="Module D" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-7" value="&lt;h1&gt;External Data&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="447.5" y="205" width="165" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="gICo3RTBHbkObXQK2Jzr-17" value="&lt;h1&gt;Module Relation Chart&lt;/h1&gt;&lt;div&gt;Arrow direction dictates the dependency of a module.&lt;/div&gt;&lt;div&gt;Where arrow points from A to B or A -&amp;gt; B it indicates that module A is dependent on module B&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-240" width="270" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
