@@ -13,7 +13,7 @@ Hardware samples were collected along each cycle to make sure that the component
 Only samples from full cycles without errors were included.
 The results for monolith are shown in table \ref{table:hardware results:monolith:1} and for independent service in table \ref{table:hardware results:independent service:1}.
 In the monolith environment $206965$ hardware samples was collected from $1649$ full cycles.
-From the independent service a total of $235183$ hardware samples was collected from $2088$ full cycles.
+From the independent service a total of $26902$ hardware samples was collected from $205$ full cycles.
 The hardware samples were collected along response time timestamps.
 Hardware samples only reflects the CPU utilization and the system memory status at the point of the timestamp collection and not the status during any meaningful process in the component.
 
@@ -65,7 +65,7 @@ The mean CPU utilization in the monolith is 24 percentage points higher compared
 
 Collected hardware samples contained information about the free memory and the total available memory for the system.
 In table \ref{table:hardware results:monolith:1} the memory data is shown for the monolith application and in table \ref{table:hardware results:independent service:1} for the independent service.
-The minimum available memory for the system in monolith was around $0.609...\%$ and in independent service around $60.805...\%$.
+The minimum available memory for the system in monolith was around $0.609...\%$ and in independent service around $61.233...\%$.
 These benchmarks was calculated using the following formula
 \[
 \textit{Minimum available memory} = 100 \cdot \frac{\textit{Minimum free memory}}{\textit{Maximum total memory}}
@@ -73,13 +73,13 @@ These benchmarks was calculated using the following formula
 It is possible that the system would run out of memory.
 Out of memory cycles are not shown in samples since the system would raise \textit{out of memory} exception.
 The collected memory samples doesn't show out of memory errors since error cases were excluded from the analysis.
-The mean available memory was around $11.807...\%$ in monolith and $64.569...\%$ in independent service leaving plenty of memory available for the application use in the collected samples.
+The mean available memory was around $11.807...\%$ in monolith and $66.121...\%$ in independent service leaving plenty of memory available for the application use in the collected samples.
 
 \subsubsection{Response Time Samples}
 Timestamp samples were collected from both environments to measure the response time of the component.
 The results are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}.
 Start and end timestamps of each cycle were collected along the timestamps before and after all external calls made from the component.
-The response time for a cycle was calculated with the following formula
+The response time for a cycle was calculated with the following formula:
 \begin{gather*}
 \textit{ResponseTime}_n
 \\ =\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
@@ -90,14 +90,13 @@ where $n$ is the nth cycle from samples and $m$ is the made external calls for t
 The timestamps were persisted after each cycle.
 
 Collected samples contained $1649$ full cycles from monolith environment with mean response time of $\sim198.7$ms.
-The mean value was $\sim2.48$ times faster against the minimum value of $\sim 80.2$ms and $\sim5.94$ slower when compared to the maximum value of $\sim1180.6$ms in the monolith environment.
+The mean value was $\sim2.48$ times slower against the minimum value of $\sim 80.2$ms and $\sim5.94$ times faster when compared to the maximum value of $\sim1180.6$ms in the monolith environment.
 
-In the independent service a sample of $2088$ full cycles were collected with a mean value of $\sim105.6$ms.
-The mean value was $\sim3.92$ times slower compared to the minimum value of $\sim 26.9$ms and $\sim5.95$ times faster compared to the maximum value of $\sim 628.9$ms.
+In the independent service a sample of $205$ full cycles were collected with a mean value of $\sim106.2$ms.
+The mean value was $\sim3.14$ times slower compared to the minimum value of $\sim 33.76$ms and $\sim3.80$ times faster compared to the maximum value of $\sim 403.94$ms.
 
-Mean response time in independent service was $\sim1.88$ times faster when compared to the mean response time of the monolith.
-While the difference between maximum value and mean value for both environments was quite close to each other, less than $\sim1.2$ percentage points, the difference with mean and minimum value was much bigger.
-The difference between mean value and minimum value for both environments was $\sim144.31$ percentage points.
+Mean response time in monolith was $\sim1.87$ times slower when compared to the mean response time in the independent service.
+The minimum value in the monolith was $\sim 66.63$ percentage points greater that the minimum value in the independent service and the maximum value in the monolith was $\sim 213.57$ percentage points greater when compared to the maximum value in the independent service.
 
 \begin{table}[h!]
        \begin{tabular}{|c|c|c|c|} 
@@ -110,26 +109,30 @@ The difference between mean value and minimum value for both environments was $\
         \hline\hline
         Mean
         & 1.0
-        & 2.640327...
-        & 4.089143... \\ 
+        & 2.715358... 
+        & 4.106678...
+        \\
         
         Median
         & 1.0
-        & 2.576351...
-        & 4.072448... \\ 
+        & 2.631246...
+        & 4.133356...
+        \\ 
 
         Minimum
         & 1.0
-        & 2.513269...
-        & 4.072448...\\ 
+        & 2.530976...
+        & 4.072448...
+        \\ 
         
         Maximum
         & 1.0
-        & 3.058026...
-        & 4.133356... \\
+        & 3.034747...
+        & 4.133356...
+        \\
         \hline
     \end{tabular}
-    \caption{Hardware Utilization - Independent Service $n=235183$}
+    \caption{Hardware Utilization - Independent Service $n=26902$}
     \label{table:hardware results:independent service:1}
 \end{table}
 
@@ -139,18 +142,21 @@ The difference between mean value and minimum value for both environments was $\
         Environment
         & Count (n)
         & Mean (ms)
-        & Median (ms) \\ [0.5ex] 
+        & Median (ms)
+        \\ [0.5ex] 
         
         \hline\hline
         Monolith
         & 1649
         & 198.747024...
-        & 184.522865...\\ 
+        & 184.522865...
+        \\ 
         
         Independent Service
-        & 2088
-        & 105.660088...
-        & 80.588923... \\
+        & 205
+        & 106.166740...
+        & 88.404872
+        \\
         \hline
     \end{tabular}
     \caption{Results for response time samples. Timestamps are in milliseconds.}
@@ -167,11 +173,13 @@ The difference between mean value and minimum value for both environments was $\
         \hline\hline
         Monolith
         & 80.201486... 
-        & 1180.642508... \\ 
+        & 1180.642508...
+        \\ 
         
         Independent Service
-        & 26.945697... 
-        & 628.904505...  \\
+        & 33.763860
+        & 403.937152
+        \\
         \hline
     \end{tabular}
     \caption{Results for response time samples. Timestamps are in milliseconds.}
@@ -188,11 +196,13 @@ The difference between mean value and minimum value for both environments was $\
         \hline\hline
         Monolith
         & $85.409388... \cdot 10^6$
-        & $2.103271... \cdot 10^6$ \\ 
+        & $2.103271... \cdot 10^6$
+        \\ 
         
         Independent Service
-        & $86.727126... \cdot 10^6$
-        & $1.897972... \cdot 10^6$ \\ 
+        & $77.391723... \cdot 10^6$
+        & $5.405272... \cdot 10^6$
+        \\ 
          \hline
     \end{tabular}
     \caption{Results for response time samples. Timestamps are in nanoseconds.}
@@ -201,9 +211,9 @@ The difference between mean value and minimum value for both environments was $\
 
 \subsubsection{Summary}
 The component performance was not limited by the hardware according to the collected hardware sample.
-Most of the systems CPU was unused and average of at least $11.8\%$ free memory was available for the system to use.
+Most of the systems CPU was unused and average of at least $11.8\%$ free memory was available for the systems to use.
 
-The response time being $\sim1.88$ times faster in independent service when compared to monolith environment.
+The response time being $\sim 1.87$ times faster in independent service when compared to monolith environment.
 Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
 To see if there is statistically relevant difference in the components response time a significance test was performed.
 
@@ -221,13 +231,13 @@ The value of test statistic $TS$ is
 TS=\frac{\overline{x}_m-\overline{x}_i}{\sqrt{\frac{S_m^2}{n_m}+\frac{S_i^2}{n_i}}}
 \]
 \[
-TS=32.857757... \approx 32.858
+TS=15.961947... \approx 15.962
 .\]
  
 With one sided Z test the null hypothesis \textbf{H0} will be rejected when the $p$ value 
 equals the probability that a standard normal is as large as $TS$. Calculating the $p$ value we get % It doesn't  make any sense
 \[
-\text{p value} = P\{Z\geq TS\} \approx P\{Z\geq 32.858\} \leq P\{Z\geq 3.49\} = 0.0002
+\text{p value} = P\{Z\geq TS\} \approx P\{Z\geq 15.961947...\} \leq P\{Z\geq 3.49\} = 0.0002
 .\]
 
 The $p$ value being at least $0.0002$ the null hypothesis \textbf{H0} can be rejected with any significance level above $0.02\%$.
