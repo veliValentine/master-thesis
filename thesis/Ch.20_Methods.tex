@@ -1,29 +1,17 @@
 \chapter{Methods\label{methods}}
-Three research questions and a hypothesis are defined to find out if there is any significant difference to response times of a server side JavaScript component in different environments.
-To answer these questions data is collected from the component and a hybrid literature review is performed.
+A research question is defined to find out if there is any significant difference in performance of a server side JavaScript component in different environments.
+To answer these questions performance samples are collected from the component and their significance evaluated.
 
 \section{Research questions}
-\begin{itemize}
-    \item RQ1\label{RQ1}: What is the response time of a server side monolith JavaScript application?
-    \item RQ2\label{RQ2}: What is the response time of a server side independent JavaScript service?
-    \item RQ3\label{RQ3}: What is the relation of the response time in different environments?
-\end{itemize}
+In order to see how the performance of Node.js component differs in monolith and microservice environment a research question is defined.
 
-The first research question (RQ1) aims to provide data related to the response time of JavaScript component. The component is running as part of the monolith application.
+\textbf{RQ1}: How does refactoring a server side node.js component from monolith to a part of microservice affect the performance of the component?
 
-The second research question (RQ2) aims to provide data related to the response time of JavaScript component. The component is running as an independent service.
-
-The third research question (RQ3) provides statistical analysis based on the data provided by the first (RQ1) and second (RQ2) research questions.
+Answering the research question \textbf{RQ1} should give us some insight what the performance of a Node.js component is as a part of a monolith environment and as a part of a microservice environment and how these performances relate to each other.
 
 \section{Hypothesis}
-In order to test if there is statistical difference between response times in different environments a one sided Z hypothesis test is performed.
-Hypothesis test contains null hypothesis \textbf{H0} and alternative hypothesis \textbf{H1}.
-
-\textbf{H0}\label{H0}: $\mu_1\le\mu_2$
-
-\textbf{H1}\label{H1}: $\mu_1>\mu_2$
-
-Where $\mu_1$ is the mean response time of the component as a part of a monolith application and $\mu_2$ is the mean response time of the component in independent service.
+In order to see if there is statistical significance between response times in different environments a one sided significance test is performed.
+The test contains null hypothesis \textbf{H0} $\mu_m\le\mu_i$ and alternative hypothesis \textbf{H1} $\mu_m>\mu_i$ where $\mu_m$ is the mean response time of the component as a part of a monolith application and $\mu_i$ is the mean response time of the component in independent service.
 
 \section{Literature}
 To find existing literature related to the research a two phase hybrid literature search was performed.
@@ -141,51 +129,28 @@ The method included
 
 The result can be found in the \textbf{reference table}.
 
-\section{Data}
-% What data was collected?
-To measure the response time of the component a series of data points were collected.
-The data points were collected from two environments.
-In first environment the component was integrated as a part of monolith application.
-Second environment contained the component and the needed component for communication with the component.
+\section{Collecting Sample Data}
+To measure the performance of the component a series of data points were collected along each cycle.
+The performance data were collected from both environments over two month period.
+In the first environment the component was integrated as a part of monolith application.
+In the second environment the component was refactored into independent service containing only the studied component and the needed functionality for communication with the component.
 
-The measured data contains run-time information about the component.
-A single data point contains five values.
+To measured performance of the component a sample of data points were collected at run-time.
+Each data point contains the cycle identification number, the run-time environment, system timestamp and information from system hardware.
+A single data point contains all these values.
 \begin{enumerate}
     \item Cycle id
-    \item Timestamp id
+    \item Run-time environment id
     \item System time (in nanoseconds)
-    \item System free memory
-    \item System total memory
-    \item Used process CPU percentage
+    \item System free memory (in bytes)
+    \item System total memory (in bytes)
+    \item Used CPU percentage (used CPU over total usable CPU)
 \end{enumerate}
 
-The cycle id is unique for each cycle.
+The cycle id is unique for each cycle and environment.
+The system time and run-time environment were collected to collect data required to measure the response time.
 The memory and CPU usages were collected to ensure that the system had enough resources to operate.
-Data points were collected at the beginning of the application cycle, at the end of the cycle and before and after each third party or internal function call.
-
-For each environment the data was saved at run-time and persisted at the end of each cycle.
-Sometimes the cycle was interrupted by an error or the collected data was not complete.
-Only valid data was analyzed.
-Valid data contains data from full cycle excluding all error cases,
-
-\textbf{Table about how many total data points per environment and how many full cycles}
-
-\textbf{Table containing mean, standard deviation, sample size and standard error for each module, environment and external calls for each environment}
-
-
-
-
-% What data was included and what excluded? And reasons
-
-% What data sources are used and why?
-
-
-% How data from the component was collected
-
-% How data was analysed
-
-% How the data can answer the research questions
-
-% How case size (data points) was defined
-
-% Description of the data measurement, setup and data collection
+Data were collected along each cycle.
+This included the start and end of the cycle, and before and after each external data call.
+The data was saved at run-time and persisted at the end of each cycle.
+Sometimes the cycle was interrupted by an error or the collected data was not complete leaving partial data in the sample.

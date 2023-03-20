@@ -1,27 +1,44 @@
 \chapter{Discussion\label{discussion}}
-What does the results tell?
+\section{Notes}
+\textit{What does the results tell?}
+Independent service is faster.
+For component with critical performance it should be excluded for any other process.
 
-What can affects the results?
+\textit{What can affects the results?}
+Bad code from other components can block the event loop affecting the performance of other components in monolith environment.
 
-Difference in other programming languages.
+\textit{Difference in other programming languages.}
+JavaScript is bad programming language for performance critical system.
 
-Discussion on the benchmarks on JavaScript and other programming languages.
+\textit{Discussion on the benchmarks on JavaScript and other programming languages.}
 
-Benefits of the results.
+\textit{Benefits of the results.}
+For the studied case it is beneficial to refactor components to independent services.
 
-Any biased towards the research.
+\textit{Any biased towards the research.}
+Expected that the performance is better in single service than in monolith.
 
-Any problems that might have affected the results
+\textit{Any problems that might have affected the results.}
+No control over used resources. No equal resources with monolith and microservice. Now the performance is affected by the used cpu.
 
-Different view points considered.
+\textit{Different view points considered.}
 
-Ethical issues.
+\textit{Ethical issues.}
 
-Practical implications.
+\textit{Practical implications.}
 
-Comparison to related work
+\textit{Comparison to related work}
 
 
 \section{Related work}
+\subsection{Notes}
 Related studies, JavaScript benchmarks etc...
 % Tulosten merkitsevyys
+
+\section{Future Studies}
+\subsection{Notes}
+Controlled Experiment to see if the results can be reproduced.
+
+Case study to measure other components performances in the studied system and see if there is a correlation with the results.
+
+See if the results are specific to javascirpt or if they can be reproduced with single threaded language like rust or multithreaded language like java or C\#
