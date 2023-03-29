@@ -209,6 +209,22 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
     \label{table:response time results:3}
 \end{table}
 
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|} 
+        \hline
+        \textbf{To Do}
+        & Show mean, min and max values from both environments next to each other.
+        \\
+        \hline
+        \textbf{To Do}
+        & Show mean value with 95th-percentile confidence interval.
+        \\ [0.5ex] 
+        \hline
+    \end{tabular}
+    \caption{Bar graph for samples. 95th-percentile confidence intervals}
+    \label{grap:response time results:bar-95th}
+\end{table}
+
 \subsubsection{Summary}
 The component performance was not limited by the hardware according to the collected hardware sample.
 Most of the systems CPU was unused and average of at least $11.8\%$ free memory was available for the systems to use.
@@ -237,12 +253,57 @@ TS=15.961947... \approx 15.962
 With one sided Z test the null hypothesis \textbf{H0} will be rejected when the $p$ value 
 equals the probability that a standard normal is as large as $TS$. Calculating the $p$ value we get % It doesn't  make any sense
 \[
-\text{p value} = P\{Z\geq TS\} \approx P\{Z\geq 15.961947...\} \leq P\{Z\geq 3.49\} = 0.0002
+\text{p value} = P\{Z\geq TS\} = P\{Z\geq 15.962...\} \leq P\{Z\geq 3.49\} = 0.0002
 .\]
 
 The $p$ value being at least $0.0002$ the null hypothesis \textbf{H0} can be rejected with any significance level above $0.02\%$.
-With common significance levels 1\%, 5\% and 10\% the null hypothesis \textbf{H0} was rejected in favor of the alternative hypothesis \textbf{H1}.
-The mean response time in the monolith is statistically slower than the mean response time in the independent service.
+With significance levels 1\%, 5\% and 10\% the null hypothesis \textbf{H0} was rejected in favor of the alternative hypothesis \textbf{H1}.
+The mean response time of the component in the monolith is statistically slower than the mean response time of the component in the independent service.
 
 \section{Literature}
-Found literature and results.
+Literature review results.
+
+\subsubsection{Literature Search}
+The search was based on the search engines defined in literature review protocol.
+The engines can be viewed in table \textbf{ToDo ref to table}.
+
+The search returned \textbf{HITS} hits.
+Search results are shown in table \ref{table:literature:searchResults}.
+
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|c|} 
+        \hline
+        Search Engine
+        & Search Hits
+        & Unique Hits
+        & Dublicate Hits
+        \\ 
+        \hline
+    \end{tabular}    
+    \caption{Literature Search Results}
+    \label{table:literature:searchResults}
+\end{table}
+
+\subsubsection{Included Literature}
+\textit{Text containing included literature and results per engine}.
+Results with inclusion score can be found in table \ref{table:literature:inclusionResults}
+
+\begin{table}[h!]
+    \begin{tabular}{| c | c |}
+        \hline
+        Title
+        & Relevance Score
+        \\
+        \hline
+    \end{tabular}
+    \caption{Results with given relevance score}
+    \label{table:literature:inclusionResults}
+\end{table}
+
+\subsubsection{Excluded Literature}
+\textit{Text that shows the result after reviewing results from exclusion}
+
+
+\subsubsection{Final result}
+\textit{Summary about the results}
+\textit{Tables about the results - Articles grouped by related category and criteria}

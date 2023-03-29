@@ -1,133 +1,150 @@
 \chapter{Methods\label{methods}}
-A research question is defined to find out if there is any significant difference in performance of a server side JavaScript component in different environments.
-To answer these questions performance samples are collected from the component and their significance evaluated.
+Research methods are defined in this chapter.
+The methods includes defining the research question, data collection, hypothesis and literature review.
+One research question is asked in order to answer if there is difference in server side Node.js performance when it is refactored from monolith to independent service.
+The methods of data collecting are defined.
+Hypothesis aims to give the insight on the statistical meaningfulness related to collected data.
+Literature review gives systematic way to answering the asked research question.
+
+% VANHA INTRO
+%A research question is defined to find out if there is any significant difference in performance of a server side JavaScript component in different environments.
+%To answer these questions performance samples are collected from the component and their significance evaluated.
 
 \section{Research questions}
-In order to see how the performance of Node.js component differs in monolith and microservice environment a research question is defined.
+In order to see how the performance of Node.js component differs in monolith environment and microservice environment a research question is asked.
 
-\textbf{RQ1}: How does refactoring a server side node.js component from monolith to a part of microservice affect the performance of the component?
+\textbf{RQ1}: How does refactoring Node.js component from monolith to microservice affect its performance?
 
-Answering the research question \textbf{RQ1} should give us some insight what the performance of a Node.js component is as a part of a monolith environment and as a part of a microservice environment and how these performances relate to each other.
+Answering the research question \textbf{RQ1} should give us some insight what the performance of a Node.js component is as a part of a monolith environment and as a part of a microservice environment and is there any performance difference between these environments.
 
 \section{Hypothesis}
 In order to see if there is statistical significance between response times in different environments a one sided significance test is performed.
-The test contains null hypothesis \textbf{H0} $\mu_m\le\mu_i$ and alternative hypothesis \textbf{H1} $\mu_m>\mu_i$ where $\mu_m$ is the mean response time of the component as a part of a monolith application and $\mu_i$ is the mean response time of the component in independent service.
+The test contains null hypothesis \textbf{H0} that indicates that there is no significance difference in the mean response time $\mu_m\le\mu_i$.
+Alternative hypothesis \textbf{H1} indicates that the mean response time in monolith environment is significantly slower compared to the mean response time in independent service $\mu_m>\mu_i$.
+$\mu_m$ is the mean response time of the component as a part of a monolith environment and $\mu_i$ is the mean response time of the component in independent service.
 
 \section{Literature}
-To find existing literature related to the research a two phase hybrid literature search was performed.
-First phase contained a modified systematic literature review with predefined keywords.
-The seconds phase used snowballing method with one iteration on the literature found on first phase.
-One iteration consisted one back step and one forward step for each final results from phase one.
+Literature review was performed in order to find related literature that provides insight to \textbf{RQ1}.
 
-\subsection{Literature review}
-The first search phase is a literature review to find out relevant literature to the case.
+\subsection{Literature Review}
+Literature review was performed in order to find studies that are related to performance of Node.js application, performance changes when refactoring component from monolith to microservice and V8 benchmarks.
 
-\subsubsection{Review protocol}
-To find out about related research a five step literature review was implemented.
-
+The review was performed using review protocol that included four steps.
+Review protocol was defined in order to provide reproducible framework for reviewing found literature.
+The review protocol is following:
 \begin{enumerate}
-    \item Define the review protocol.
+    \item Define the review protocol
     \item Search literature based on the protocol.
-    \item Filter results by title and meta-data.
-    \item Review findings abstracts by criteria.
-    \item Analyze relevant results.
+    \item Review literature based on inclusion criteria
+    \item Review literature based on exclusion criteria
 \end{enumerate}
 
-The first step defines the protocol used in the search.
+The first step defines the used protocol.
+This includes defining search engines, used search string, inclusion criteria and exclusion criteria.
+The second step performs the search for the related literature based on the defined protocol.
+Third step decides the results that are included and fourth step the results that are excluded.
+% 1. Search string, used engines with twists. Included articles related to title.
+\subsubsection{Protocol}
+In order to find literature that gives insight to \textbf{RQ1} a literature search was performed.
+Four different search engines were used for finding related literature.
+Used engines can be seen in table \ref{table:literature:searchEngines}.
 
-The second step search for the related research based on the protocol.
+\begin{table}[h!]
+    \begin{tabular}{| c | c |} 
+        \hline
+        Engine
+        & Url
+        \\ [0.5ex] \hline
+        
+        Helka (University of Helsinki library)
+        & \url{https://helka.helsinki.fi/}
+        \\ \hline
+        
+        IEEE Xplore
+        & \url{https://ieeexplore.ieee.org}
+        \\ \hline
+        
+        Google Scholar
+        & \url{https://scholar.google.com/}
+        \\ \hline
 
-The third step performs the first analysis of the results to find out relevant research.
+        Scopus
+        & \url{https://www.scopus.com/home.uri}
+        \\ \hline
+    \end{tabular}    
+    \caption{Used search engines.}
+    \label{table:literature:searchEngines}
+\end{table}
 
-The fourth step reviews filtered articles and gives them a quality score.
+Search was performed using search string that matches literature title.
+The search string was modified using documentation of used search engine allowing results not to be limited for any spelling differences.
+For example search including "microservice" was modified so that "micro-service" and similar differences were included in the results.
+Search string used before modifications was "\textit{performance AND (V8 OR JavaScript OR Node.js OR (microservice AND monolith))}".
 
-The fifth steps performs the analysis of the results from the fourth step.
+Inclusion of found literature was based on inclusion score.
+Inclusion score was based on review of results title and abstract and their relevance to the inclusion criteria seen in table \ref{table:literature:inclusionCriteria}.
+Each criteria was given points based on their relevance to the criteria.
+Point system can be seen in table \ref{table:literature:pointSystem}.
+Each results could receive minimum of $0$ points and maximum of $14$ points.
 
-\subsubsection{The search}
-The search was performed on the following search engines: 
-\begin{itemize}
-    \item 1. search engine
-    \item ...
-\end{itemize}.
+\begin{table}[h!]
+    \begin{tabular}{|c c|} 
+        \hline
+        Criteria & Description \\ [0.5ex] 
+        \hline
+        Cr.1 & JavaScript performance review
+        \\ 
+        \hline
+        Cr.2 & Node.js performance review  \\ 
+        \hline
+        Cr.3 & Server side performance review  \\ 
+        \hline
+        Cr.4 & V8 engine performance review  \\ 
+        \hline
+        Cr.5 & Monolith performance review  \\ 
+        \hline
+        Cr.6 & Microservice performance review  \\ 
+        \hline
+        Cr.7 & Response time performance review  \\ 
+        \hline
+    \end{tabular}    
+    \caption{Inclusion Criteria.}
+    \label{table:literature:inclusionCriteria}
+\end{table}
 
-The search was performed on the title, abstract and meta-data for the following key words:
-\begin{itemize}
-    \item word1
-    \item word2
-    \item ...
-\end{itemize}.
+\begin{table}[h!]
+    \begin{tabular}{|c c|}
+        \hline
+        Points & Description \\ [0.5ex] 
+        \hline
+         0 & No relevance to the criteria  \\ 
+        \hline
+         1 & Some relevance to the criteria \\ 
+        \hline
+        2 & Relevant to the criteria \\ 
+        \hline
+    \end{tabular}
+    \caption{Point system for inclusion criteria.}
+    \label{table:literature:pointSystem}
+\end{table}
 
-For each search engine we used \textbf{SEARCH\_STRING} to find out related research.
-Only research from years \textbf{YEARS} was included.
+Exclusion of results were based on exclusion criteria seen in table \ref{table:literature:exclusionCriteria}.
+If the result matched any exclusion criteria it was excluded from the final result.
+Exclusion criteria aims to remove all literature not relevant to the \textbf{RQ1}.
 
-The search returned \textbf{HITS} hits.
-\textbf{TABLE\_WITH\_RESULTS\_PER\_ENGINE}
-
-
-\subsubsection{Initial filtering}
-The relevance of the each results was analyzed based on the title and meta-data related to the keywords. Each result was given score based on the point system.
-
-\subsubsection{Quality Review}
-Then the quality of found articles from the initial filtering was performed.
-Each article was review based on the review criteria and abstract.
-Each criteria was scored based on the point system.
-
-For reviewing the relevance of the articles each abstract was reviewed.
-
-\begin{flushleft}
-\begin{tabular}{|c c|} 
- \hline
- Criteria & Description \\ [0.5ex] 
- \hline
-  Cr.1 & JavaScript performance review  \\ 
-  \hline
-  Cr.2 & Node.js performance review  \\ 
-  \hline
-  Cr.3 & Architectural performance review  \\ 
-  \hline
-  Cr.4 & Response time performance review  \\ 
-  \hline
-  Cr.5 & Server side performance review  \\ 
-  \hline
-\end{tabular}
-\end{flushleft}
-
-
-\begin{flushleft}
-\begin{tabular}{|c c|} 
- \hline
- Points & Description \\ [0.5ex] 
- \hline
-  0 & No relevance to the criteria  \\ 
- \hline
-  0.5 & Some relevance to the criteria \\ 
- \hline
- 1 & Relevant to the criteria \\ 
- \hline
-\end{tabular}
-\end{flushleft}
-
-\textbf{A table of results and total points}
-
-\subsubsection{Final result}
-For the final results only articles with the relevance point at or above \textbf{relevance point threshold} was included.
-
-The final results with the quality score can be found in the \textbf{TABLE}.
-
-Add tables of results grouped by relevant data, category, relevance score, quality score.
-
-\subsection{Snowballing - Phase two}
-The snowballing method was performed on the final results from phase one.
-The method included 
-\begin{enumerate}
-    \item All references from phase one results.
-    \item Articles that referred previous steps results.
-    \item The initial filtering was performed on the all found result.
-    \item Each result were review for their quality.
-    \item Final result were analyzed. 
-\end{enumerate}
-
-The result can be found in the \textbf{reference table}.
+\begin{table}[h!]
+    \begin{tabular}{|c c|} 
+        \hline
+        Criteria & Description \\ [0.5ex] 
+        \hline
+        Cr.1 & Inclusion score less than $\textbf{ToDo decide cutoff score}$ \\
+        \hline
+        Cr.2 & Client side performance  \\
+        \hline
+    \end{tabular}    
+    \caption{Exclusion Criteria}
+    \label{table:literature:exclusionCriteria}
+\end{table}
 
 \section{Collecting Sample Data}
 To measure the performance of the component a series of data points were collected along each cycle.
@@ -153,4 +170,4 @@ The memory and CPU usages were collected to ensure that the system had enough re
 Data were collected along each cycle.
 This included the start and end of the cycle, and before and after each external data call.
 The data was saved at run-time and persisted at the end of each cycle.
-Sometimes the cycle was interrupted by an error or the collected data was not complete leaving partial data in the sample.
+Sometimes the cycle was interrupted by an error or the collected data was not complete resulting partial data to be persisted.
