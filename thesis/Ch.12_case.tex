@@ -1,8 +1,26 @@
 \chapter{The Case\label{case}}
 
-% OLD
-In this chapter an overview to the studied component is given.
-Also we are going to peek into the architecture of each environment and how they are related to the component.
+\section{Architecture}
+Initially the studied application was build using monolith architecture following a three tier pattern containing frontend, backend and database.
+The backend was written using Node.js.
+It contains multiple components each with its own purpose.
+One of the components were refactored out of the monolith application into the independent service.
+The independent service contained an application interface to allow communication to the component and the component itself.
+The architecture before and after refactoring can be seen in figures \ref{figure:architecture:monolith} and \ref{figure:architecture:independent_service}.
+
+
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{images/monolith_architecture.png}
+    \caption{Architectural overview of the application before refactoring.}
+    \label{figure:architecture:monolith}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\textwidth]{images/independent_service_arcitecture.png}
+    \caption{Architectural overview of the application after refactoring.}
+    \label{figure:architecture:independent_service}
+\end{figure}
+
 
 \section{Overview of the Component}
 The studied component is written in JavaScript using Node.js.
@@ -16,14 +34,13 @@ The component can not be scaled horizontally.
 \end{figure}
 \begin{figure}
     \includegraphics[width=\textwidth]{images/module_flow_chart.png}
-    \caption{Modules flowchart. Modules are run inside the component.}
+    \caption{Modules flowchart. Modules are run inside the studied component.}
     \label{figure:module:flow}
 \end{figure}
 
-The component contains four modules A, B, C and D.
+The studied component contains four modules A, B, C and D.
 Some modules are dependent on external data and some are dependent on other modules.
 The dependencies can be seen in figure \ref{figure:module:relation}.
-%All response times for data fetching are excluded from the performance review.
 
 Modules run in cycles where one full cycle contains successful performance from all modules A to D.
 The modules are run in sequence one by one from A to D.
