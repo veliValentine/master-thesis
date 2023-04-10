@@ -1,15 +1,22 @@
 \chapter{Introduction\label{intro}}
+Node.js is a asynchronous event-driven JavaScript runtime environment that is designed to build scalable network applications (\cite{node.jsAbout}).
+In its core process it uses event loop at runtime to handle any callbacks.
+Node.js is able to perform blocking I/O event within a single runtime thread by offloading operations to system kernel when possible (\cite{node.jsEventLoop}).
+These operations are called non-blocking operations or asynchronous operations (\cite{node.jsOverviewBlockVsNonBlock}).
+Events that block the event loop from continuing its process are called blocking operations or synchronous operations.
+Node.js itself is able to perform one event at any given time and offloading processes to continue working on other events.
 
-Introduction to the topic.
+In this paper we study a case where a node.js component runs inside a monolith application and is refactored to be a part of microservice architecture.
+To the case it is critical that the studied component is as fast as it can be.
+We are going to study if there is a difference in the components response time in these environments and if the single threaded event loop of node.js has any part to it.
 
-A case study to measure response time of JavaScript application in different environments. 
+There are many studies related to the performance of node.js application.
+Many studies compared node.js server performance to other programming languages.
+\cite{Challapalli}, \cite{Lion} and many others compared performance of node.js server to other servers build with different programming languages including python, .net, java, c++, php etc.
+These studies mainly focused on the throughput and response time of a servers application interface with different user scenarios.
 
-\subsubsection{Motivation}
-Why this topic? What we are hoping to find out?
+A deeper review of node.js and the event loop is given in the background chapter.
+In the case chapter and overview of the case architecture is given including a review of the studied component.
+Methods for collecting components response time and literature collection methods are described in the methods chapters and their results in the following results chapter.
+Discussion to found results and their meaning is found in the related chapter.
 
-\subsubsection{Intentions}
-How this thesis is structured.
-What reader can expect.
-
-
-\subsubsection{Cause relation}

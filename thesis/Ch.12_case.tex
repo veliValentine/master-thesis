@@ -2,13 +2,13 @@
 
 \section{Architecture}
 Initially the studied application was build using monolith architecture following a three tier pattern containing frontend, backend and database.
-The backend was written using Node.js.
+The backend was written using Node.js version v14.19.1 that uses V8 engine version \textit{8.4.371.23-node.85}.
 It contains multiple components each with its own purpose.
 One of the components were refactored out of the monolith application into the independent service.
+
 The independent service contained an application interface to allow communication to the component and the component itself.
+The independent service was build using Node.js with version v14.18.3 that uses V8 engine version \textit{8.4.371.23-node.85}.
 The architecture before and after refactoring can be seen in figures \ref{figure:architecture:monolith} and \ref{figure:architecture:independent_service}.
-
-
 
 \begin{figure}
     \includegraphics[width=\textwidth]{images/monolith_architecture.png}
@@ -17,73 +17,98 @@ The architecture before and after refactoring can be seen in figures \ref{figure
 \end{figure}
 \begin{figure}
     \includegraphics[width=\textwidth]{images/independent_service_arcitecture.png}
-    \caption{Architectural overview of the application after refactoring.}
+    \caption{Architectural overview of the application after refactoring the component into independent service.}
     \label{figure:architecture:independent_service}
 \end{figure}
 
+Both environments, the monolith and the independent service, were running in linux server provided by amazon web services.
+The hardware specs differed for both environment.
+The monolith had 64GB RAM with 8 vCPU of computing power while the independent service had 4GB of RAM with 1 vCPU of computing power available.
+The use of production environment didn't allow to utilize same resources for both environments.
+
+\begin{table}[h!]
+    \begin{tabular}{|c|c|c|c|c|} 
+        \hline
+        Environment
+        & RAM (GB)
+        & Core (vCPU)
+        & Node.js version
+        & V8 version
+        \\ 
+        \hline
+        Monolith
+        & 64GB
+        & 8
+        & v14.19.1
+        & 8.4.371.23-node.85
+        \\
+        \hline
+        Independent service
+        & 8GB
+        & 1
+        & 14.18.3
+        & 8.4.371.23-node.85
+        \\
+        \hline
+    \end{tabular}    
+    \caption{Hardware specification.}
+    \label{table:harware:specs}
+\end{table}
 
 \section{Overview of the Component}
-The studied component is written in JavaScript using Node.js.
-Its response time is critical to the application.
-The component can not be scaled horizontally.
+The studied component, that was refactored from the monolith environment into independent service, contains four modules.
+Each module and their response times are critical to the system.
+
+The modules run in cycles where one full cycle contains successful performance from all modules.
+Each module has to be run sequentially one after the other.
+Any error interrupts the cycle resulting in a halt of the process.
+User input is required for restarts.
+\begin{itemize}
+    \item
+    \textbf{Module A} is the first module in the cycle.
+    It is always called when the cycles are running.
+    
+    \item
+    \textbf{Module B} is the second module in the cycle.
+    It runs after \textbf{module A}.
+    
+    \item
+    \textbf{Module C} is the third module in the cycle.
+    It runs after \textbf{module B} only when the response from \textbf{module A} requires it to run.
+    Otherwise rest of the modules in the cycle are skipped and the cycle restarts from \textbf{module A}.
+
+    \item
+    \textbf{Module D} is the last module in the cycle.
+    After it is finished the cycle is restarted from \textbf{module A}.
+\end{itemize}
+
+Modules A, C and D are dependent on external data.
+Module D is dependent on module C and module C is dependent on module A.
+All modules are dependent in input parameters in a way that user can determine when the process is halted and continued.
+Note that error at any point of the cycle ends the process requiring manual restart of the cycle from the user.
+The dependencies of the modules can be seen in figure \ref{figure:module:relation}.
+The flowchart of the modules are shown in figure \ref{figure:module:flow}.
 
 \begin{figure}
     \includegraphics[width=\textwidth]{images/modules_relation_uml.png}
     \caption{Components modules and their dependencies.}
     \label{figure:module:relation}
 \end{figure}
+
+
 \begin{figure}
     \includegraphics[width=\textwidth]{images/module_flow_chart.png}
     \caption{Modules flowchart. Modules are run inside the studied component.}
     \label{figure:module:flow}
 \end{figure}
 
-The studied component contains four modules A, B, C and D.
-Some modules are dependent on external data and some are dependent on other modules.
-The dependencies can be seen in figure \ref{figure:module:relation}.
-
-Modules run in cycles where one full cycle contains successful performance from all modules A to D.
-The modules are run in sequence one by one from A to D.
-Any error interrupts the cycle and ends the process.
-
-The \textbf{module A} is the first module in the sequence.
-It is the first module of the cycle and is always called.
-
-The \textbf{module B} is the second module in the sequence.
-It is independent from other modules and it runs after \textbf{module A}.
-
-The \textbf{module C} is the third module in the sequence.
-It runs after \textbf{module B} only when response from \textbf{module A} requires it to run.
-
-The \textbf{module D} is the final module in the sequence.
-It is run after \textbf{module C}.
-After the module performs its operations the cycle restart from the \textbf{module A}.
-
-The sequence of the modules are shown in figure \ref{figure:module:flow}.
-Note that error at any point of the sequence ends the process.
-
 When any of the modules fails to perform its task an error is raised and the cycle is interrupted.
 When modules are running without errors the modules A and B are always performed. 
 The modules C and D are run only when the data from \textbf{module A} requires them to run.
-Each module waits for the response of every external call before continuing their process.
+Each module waits for the response of external calls before continuing their process.
+The modules makes no internal calls to other modules or to the systme.
 
-\section{Monolith Overview}
-The monolith uses Node.js version 14.19.1. The node version runs using V8 engine version \textit{8.4.371.23-node.85}.
-
-The monolith application is a three tier application containing user interface, server side and database.
-The server side contains four components.
-One of the components is the component studied in this research.
-The component is run independently from other components.
-In appendix \ref{appendix:architecture:monolith} the overall architecture of the monolith environment can be seen.
-
-\section{The Independent Service}
-The independent service uses Node.js version 14.18.3.
-The node version uses v8 engine version \textit{8.4.371.23-node.85}.
-
-The service contains the component studied in this research and some functionality that allows communication with the component.
-The architecture of the whole application including the independent service can be seen in appendix \ref{appendix:architecture:microservices}
-
-\section{Summary}
+\section{Performance of the Case}
 This research studies performance of a server side JavaScript software component.
 Performance is defined as components response time excluding all calls outside the component.
 Component is written using JavaScript with Node.js.
