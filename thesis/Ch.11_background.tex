@@ -1,19 +1,9 @@
 \chapter{Background\label{background}}
-This chapter gives background information on the related technologies and architectural patterns.
+Node.js is a asynchronous event-driven JavaScript runtime environment that is designed to build scalable network applications (\cite{node.jsAbout}).
+In its core process it uses event loop at runtime to handle callbacks.
+Node.js is able to perform blocking I/O event within a single runtime thread by offloading operations to system kernel when possible (\cite{node.jsEventLoop}).
+These operations are called non-blocking operations or asynchronous operations (\cite{node.jsOverviewBlockVsNonBlock}).
+Events that block the event loop from continuing its process are called blocking operations or synchronous operations.
+Node.js itself is able to perform one event at any given time and offloading processes when required to continue working on other events.
 
-\section{Node.js}
-\subsection{JavaScript}
-\subsection{V8 Engine}
-
-\begin{table}
-    \begin{tabular}{|c c|} 
-     \hline
-     Node.js version & V8 version \\ [0.5ex] 
-     \hline
-     14.18.3 & 8.4.371.23-node.85  \\ 
-     \hline
-      14.19.1 & 8.4.371.23-node.85  \\ 
-     \hline
-    \end{tabular}
-    \caption{Node.js versions an the V8 engine they use.}
-\end{table}
+Node.js event loop 
