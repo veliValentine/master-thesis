@@ -1,12 +1,8 @@
 \chapter{Methods\label{methods}}
-Research methods includes defining the research question, literature review, data collection and hypothesis.
+Research methods includes defining the research question, literature review and data collection.
 One research question is asked in order to answer if there is difference in server side Node.js performance when it is refactored from monolith to independent service.
 Literature review is performed to find literature related to research question.
-Data collection methods and hypothesis based on the collected data provides insight related to the case and the research question.
-
-% VANHA INTRO
-%A research question is defined to find out if there is any significant difference in performance of a server side JavaScript component in different environments.
-%To answer these questions performance samples are collected from the component and their significance evaluated.
+Data collection methods provides insight related to the case and the research question.
 
 \section{Research questions}
 In order to see how the performance of Node.js component differs in monolith environment and microservice environment a research question is asked.
@@ -166,10 +162,3 @@ Data were collected along each cycle.
 This included the start and end of the cycle, and before and after each external data call.
 The data was saved at run-time and persisted at the end of each cycle.
 Sometimes the cycle was interrupted by an error or the collected data was not complete resulting partial data to be persisted.
-
-\section{Hypothesis}
-In order to see if there is statistical significance between response times in different environments a one sided significance test is performed.
-The test contains null hypothesis \textbf{H0} that indicates that there is no significance difference in the mean response time $\mu_m\le\mu_i$.
-Alternative hypothesis \textbf{H1} indicates that the mean response time in monolith environment is significantly slower compared to the mean response time in independent service $\mu_m>\mu_i$.
-$\mu_m$ is the mean response time of the component as a part of a monolith environment and $\mu_i$ is the mean response time of the component in independent service.
-
