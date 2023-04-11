@@ -1,9 +1,44 @@
-<mxfile host="app.diagrams.net" modified="2023-04-11T11:52:52.581Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" version="21.1.5" etag="1KYuCVPIsFZAaqx9m0HM" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-11T11:55:10.645Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="ul6dATj-anxkgxjs1amv" version="21.1.5" type="github">
   <diagram name="Page-1" id="QXK3EJxhuusYu3EONmIH">
-    <mxGraphModel>
+    <mxGraphModel dx="331" dy="625" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;dashed=1;" edge="1" parent="1" source="mlVtL4ytqV4-waL4qsVr-1" target="mlVtL4ytqV4-waL4qsVr-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-1" value="timers" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-2" value="pending callbacks" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="140" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-3" value="idle, prepare" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-4" value="poll" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="260" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-5" value="check" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="mlVtL4ytqV4-waL4qsVr-6" target="mlVtL4ytqV4-waL4qsVr-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="400" />
+              <mxPoint x="90" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-6" value="close callbacks" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="380" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="mlVtL4ytqV4-waL4qsVr-9" target="mlVtL4ytqV4-waL4qsVr-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mlVtL4ytqV4-waL4qsVr-9" value="incoming:&lt;br&gt;connections, data, etc." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="334" y="240" width="136" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
