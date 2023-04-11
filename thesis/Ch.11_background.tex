@@ -37,3 +37,9 @@ When no timers are scheduled the poll phase executes its callbacks synchronously
 If there are scripts called by \textit{setImmediate}, once the poll queue is empty the event loop ends poll phase and enters the check phase.
 Otherwise the event loop will wait for callbacks to be added to poll queue and execute them immediately.
 Once the poll queue is empty the event loop will check for timers whose time threshold has been reached and wrap back to the timers phase.
+
+\begin{figure}[ht!]
+    \includegraphics[scale=0.8]{images/poll_phase_flow_chart.png}
+    \caption{Poll phase decision chart.}
+    \label{figure:nodejs:pollPhase}
+\end{figure}
