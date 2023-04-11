@@ -1,7 +1,7 @@
 \chapter{The Case\label{case}}
 
 \section{Architecture}
-Initially the studied application was build using monolith architecture following a three tier pattern containing frontend, backend and database.
+Before refactoring the studied application was build using monolith architecture following a three tier pattern containing frontend, backend and database.
 The backend was written using Node.js version v14.19.1 that uses V8 engine version \textit{8.4.371.23-node.85}.
 It contains multiple components each with its own purpose.
 One of the components were refactored out of the monolith application into the independent service.
@@ -9,6 +9,20 @@ One of the components were refactored out of the monolith application into the i
 The independent service contained an application interface to allow communication to the component and the component itself.
 The independent service was build using Node.js with version v14.18.3 that uses V8 engine version \textit{8.4.371.23-node.85}.
 The architecture before and after refactoring can be seen in figures \ref{figure:architecture:monolith} and \ref{figure:architecture:independent_service}.
+
+\begin{table}[h!]
+    \begin{tabular}{|c c|} 
+         \hline
+         Node.js version & V8 version \\ [0.5ex] 
+         \hline
+         14.18.3 & 8.4.371.23-node.85  \\ 
+         \hline
+          14.19.1 & 8.4.371.23-node.85  \\ 
+         \hline
+    \end{tabular}
+    \caption{Node.js versions an the V8 engine they use.}
+    \label{table:node:versionsWithV8}
+\end{table}
 
 \begin{figure}
     \includegraphics[width=\textwidth]{images/monolith_architecture.png}
@@ -52,17 +66,19 @@ The use of production environment didn't allow to utilize same resources for bot
         \hline
     \end{tabular}    
     \caption{Hardware specification.}
-    \label{table:harware:specs}
+    \label{represented:harware:specs}
 \end{table}
 
 \section{Overview of the Component}
-The studied component, that was refactored from the monolith environment into independent service, contains four modules.
-Each module and their response times are critical to the system.
+The component is written using javascript and it is run in node.js runtime environment.
+While the component is running it performs cycles that consist of two or four tasks.
+Completing all task is called a full cycle.
+When a cycle is finished a new one is started and the cycles run until the process is manually stopped.
 
-The modules run in cycles where one full cycle contains successful performance from all modules.
-Each module has to be run sequentially one after the other.
+Full cycle contains four tasks.
+Each task is represented by its own module and each module is run sequentially one after the other
+all of the modules response time is critical to the system.
 Any error interrupts the cycle resulting in a halt of the process.
-User input is required for restarts.
 \begin{itemize}
     \item
     \textbf{Module A} is the first module in the cycle.
@@ -85,7 +101,7 @@ User input is required for restarts.
 Modules A, C and D are dependent on external data.
 Module D is dependent on module C and module C is dependent on module A.
 All modules are dependent in input parameters in a way that user can determine when the process is halted and continued.
-Note that error at any point of the cycle ends the process requiring manual restart of the cycle from the user.
+Error at any point of the cycle ends the process requiring manual restart of the cycle from the user.
 The dependencies of the modules can be seen in figure \ref{figure:module:relation}.
 The flowchart of the modules are shown in figure \ref{figure:module:flow}.
 
@@ -106,13 +122,11 @@ When any of the modules fails to perform its task an error is raised and the cyc
 When modules are running without errors the modules A and B are always performed. 
 The modules C and D are run only when the data from \textbf{module A} requires them to run.
 Each module waits for the response of external calls before continuing their process.
-The modules makes no internal calls to other modules or to the systme.
 
 \section{Performance of the Case}
 This research studies performance of a server side JavaScript software component.
-Performance is defined as components response time excluding all calls outside the component.
-Component is written using JavaScript with Node.js.
-The component performance is measured in two different environments.
-First environment is the one where the component is a part of monolith environment.
-In the second environment the component is refactored from the monolith environment into independent service.
+Performance is defined as the time the component takes to processing its blocking events.
+All non blocking calls from the component are timed and excluded from the performance review in order to capture the response time of all blocking events in the component.
+The component performance is measured when it is a part of a monolith application and when it is refactored into its own service.
 The component is not modified between environments.
+Its performance is critical to the system.
