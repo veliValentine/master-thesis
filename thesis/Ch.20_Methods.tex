@@ -11,34 +11,25 @@ In order to see how the performance of Node.js component differs in monolith env
 
 Answering the research question \textbf{RQ1} should give us some insight what the performance of a Node.js component is as a part of a monolith environment and as a part of a microservice environment and is there any performance difference between these environments.
 
-
 \section{Literature}
 Literature review was performed in order to find related literature that provides insight to \textbf{RQ1}.
-
-\subsection{Literature Review}
-Literature review was performed in order to find studies that are related to performance of Node.js application, performance changes when refactoring component from monolith to microservice and Node.js V8 benchmarks.
+The review was performed in order to find studies that are related to performance of node.js application, performance changes when refactoring component from monolith to microservice and node.js V8 benchmarks.
 
 The review was performed using review protocol that included four steps.
 Review protocol was defined in order to provide reproducible framework for reviewing found literature.
 The review protocol is following:
 \begin{enumerate}
-    \item Define the review protocol
-    \item Search literature based on the protocol.
-    \item Review literature based on inclusion criteria
-    \item Review literature based on exclusion criteria
+    \item Define the review protocol. This step defines used search engines, used search string, inclusion and exclusion criteria.
+    \item Search literature from defined engines using defined search string.
+    \item Review results from previous step according to inclusion criteria.
+    \item Review results from previous step according to exclusion criteria.
 \end{enumerate}
 
-The first step defines the used protocol.
-This includes defining search engines, used search string, inclusion criteria and exclusion criteria.
-The second step performs the search for the related literature based on the defined protocol.
-Third step decides the results that are included and fourth step the results that are excluded.
-% 1. Search string, used engines with twists. Included articles related to title.
-\subsubsection{Protocol}
 In order to find literature that gives insight to \textbf{RQ1} a literature search was performed.
-Four different search engines were used for finding related literature.
+Four different search engines were selected to be used for finding related literature.
 Used engines can be seen in table \ref{table:literature:searchEngines}.
 
-\begin{table}[h!]
+\begin{table}[ht!]
     \begin{tabular}{| c | c |} 
         \hline
         Engine
@@ -71,14 +62,14 @@ For example search including "microservice" was modified so that "micro-service"
 Search string used before modifications was "\textit{performance AND (V8 OR JavaScript OR Node.js OR (microservice AND monolith))}".
 
 Results from search were reviewed based on inclusion criteria seen on table \ref{table:literature:inclusionCriteria}.
-Each criteria was review based on the results title and abstract.
-Each criterion were given zero, one or two points based on their relevance to the criteria.
-Zero points were given to results that has no relevance to the criteria, one point to results that has some relevance to criteria and two points to results that are relevant to the criteria.
+Each results title and abstracts were review according to inclusion criterion.
+Each criterion were given zero, one or two points based on their relevance to the criterion.
+Zero points were given to results that has no relevance to the criterion, one point to results that has some relevance to criterion and two points to results that are relevant to the criterion.
 The points system can be seen in table \ref{table:literature:pointSystem}.
-Inclusion score of a result was the sum of points from each criteria
+Inclusion score for a result was the sum of points from each criterion.
 Each results could receive minimum of $0$ points and maximum of $14$ points.
 
-\begin{table}[h!]
+\begin{table}[ht!]
     \begin{tabular}{|c c|} 
         \hline
         Criteria & Description \\ [0.5ex] 
@@ -103,49 +94,59 @@ Each results could receive minimum of $0$ points and maximum of $14$ points.
     \label{table:literature:inclusionCriteria}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[ht!]
     \begin{tabular}{|c c|}
         \hline
-        Points & Description \\ [0.5ex] 
+        Description & Points \\ [0.5ex] 
         \hline
-         0 & No relevance to the criteria  \\ 
+         No relevance to the criterion & 0  \\ 
         \hline
-         1 & Some relevance to the criteria \\ 
+        Some relevance to the criterion & 1 \\ 
         \hline
-        2 & Relevant to the criteria \\ 
+        Relevant to the criterion & 2 \\ 
         \hline
     \end{tabular}
-    \caption{Point system for inclusion criteria.}
+    \caption{Point system for inclusion criterion.}
     \label{table:literature:pointSystem}
 \end{table}
 
 Exclusion of results were based on exclusion criteria seen in table \ref{table:literature:exclusionCriteria}.
-If the result matched any exclusion criteria it was excluded from the final result.
+If the result matched any exclusion criterion it was excluded from the final result.
 Exclusion criteria removes all literature not relevant to the \textbf{RQ1}.
+Literature that were not available, i.e. not available for university of Helsinki student, nor in English were also excluded.
 
-\begin{table}[h!]
+\begin{table}[ht!]
     \begin{tabular}{|c c|} 
         \hline
         Criteria & Description \\ [0.5ex] 
         \hline
-        Cr.1 & Inclusion score less than 2.5 \\
+        Cr.1 & Inclusion score less than 3.5 \\
         \hline
         Cr.2 & Only client side performance  \\
+        \hline
+        Cr.3 & Not available \\
+        \hline
+        Cr.4 & Not in English \\
         \hline
     \end{tabular}    
     \caption{Exclusion Criteria}
     \label{table:literature:exclusionCriteria}
 \end{table}
 
+Final results contained 16 out of 146 related literature.
+Detailed results and review is found in the results chapter.
+
 \section{Collecting Sample Data}
 To measure the performance of the component a series of data points were collected along each cycle.
-The performance data were collected from both environments over two month period.
+The performance data were collected from both environments sequentially over two month period.
+The environments were running in production with real data.
 In the first environment the component was integrated as a part of monolith application.
 In the second environment the component was refactored into independent service containing only the studied component and the needed functionality for communication with the component.
 
 To measured performance of the component a sample of data points were collected at run-time.
 Each data point contains the cycle identification number, the run-time environment, system timestamp and information from system hardware.
 A single data point contains all these values.
+\textbf{TODO describe in more detail}
 \begin{enumerate}
     \item Cycle id
     \item Run-time environment id

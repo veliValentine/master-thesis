@@ -1,7 +1,6 @@
 \chapter{Results\label{results}}
 Literature review results and analysis on the collected data are shown in this chapter.
 
-
 \section{Literature}
 Literature review results.
 
@@ -47,12 +46,12 @@ Results with inclusion score can be found in table \ref{table:literature:inclusi
 
 
 \subsubsection{Final result}
-\textit{Summary about the results}
+\textit{Summary about the results and analysis what is performance in the results and how it was collected}
 \textit{Tables about the results - Articles grouped by related category and criteria}
 
 \section{Sample Data}
-Performance samples were collected from the component in both environments over two month period.
-In order to capture the component performance only full cycles without errors were included in the analysis.
+Performance samples were collected from the component in both environments sequentially over two month period.
+In order to capture the component performance only full cycles were included in the analysis.
 Partial cycles and cycles with errors were excluded from the samples since the performance in these cases was irrelevant to the system.
 Hardware samples are shown in tables \ref{table:hardware results:monolith:1} and \ref{table:hardware results:independent service:1}.
 The response time samples are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}.
@@ -274,10 +273,15 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
     \label{grap:response time results:bar-95th}
 \end{table}
 
-\subsubsection{Summary}
+\subsubsection{Sample Results}
 The component performance was not limited by the hardware according to the collected hardware sample.
 Most of the systems CPU was unused and average of at least $11.8\%$ free memory was available for the systems to use.
 
 The response time being $\sim 1.87$ times faster in independent service when compared to monolith environment.
 Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
 To see if there is statistically relevant difference in the components response time a significance test was performed.
+
+Collected samples were affected by the runtime condition since the data was collected from production environments.
+Collected sample sizes differs by over a thousand samples.
+Because only full cycles were included in the analysis partial cycles are excluded from the analysis.
+The data doesn't show how often the cycles were offline requiring manual restart from the user.

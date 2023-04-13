@@ -1,48 +1,48 @@
 \chapter{Discussion\label{discussion}}
-\section{Notes}
-\textit{What does the results tell?}
-Independent service is faster.
-For component with critical performance it should be excluded for any other process.
+Node.js is an event driven JavaScript runtime environment that handles events in single event loop.
+The event loop can be blocked in couple of ways.
+Allowing JavaScript performing I/O operations instead of offloading these event to kernel is a sure way to block the event loop.
+Another way for blocking the event loop is to perform complex callbacks synchronously.
+JavaScript being one threaded event driven programming language it is unable to release the occupied thread to allow concurrent operations.
 
-\textit{What can affects the results?}
-Bad code from other components can block the event loop affecting the performance of other components in monolith environment.
+\cite{SelakovicPerformanceIssues} studied the common performance issues that open source JavaScript programs have.
+They found out many ways to optimize JavaScript performance and that optimizations results differs between used JavaScript engines and event within engines versions.
+Since JavaScript handles only one event at time it is important to understand how to optimize performance at the code level.
+This way the small events takes less time improving the overall throughput of the event loop.
+For the case the performance differences between different engines and their versions was not a problem since bot environments used the same JavaScript engine.
+The component was not modified during the refactoring so it is impossible that any performance changes were related to optimization of the code level JavaScript.
 
-\textit{Difference in other programming languages.}
-JavaScript is bad programming language for performance critical system.
-
-\textit{Discussion on the benchmarks on JavaScript and other programming languages.}
-
-\textit{Benefits of the results.}
-For the studied case it is beneficial to refactor components to independent services.
-
-\textit{Any biased towards the research.}
-Expected that the performance is better in single service than in monolith.
-
-\textit{Any problems that might have affected the results.}
-No control over used resources. No equal resources with monolith and microservice. Now the performance is affected by the used cpu.
-
-\textit{Different view points considered.}
-
-\textit{Ethical issues.}
-
-\textit{Practical implications.}
-
-\textit{Comparison to related work}
-
-
-\section{Related work}
-There are many studies related to the performance of node.js application.
-Studies compared node.js server performance to other programming languages.
-\cite{Challapalli}, \cite{Lion} and many others compared performance of node.js server to servers build with different programming languages including python, .net, java, c++, php etc.
+There are many studies related to the performance of node.js applications that studied and compared node.js server performance to servers written in other programming languages.
+\cite{Challapalli}, \cite{Lion} and many others compared performance of node.js server to servers build with different programming languages including python, .NET, java, c++, php etc.
+\cite{Challapalli} compared node.js server to pythons server and showed that the node.js server outperformed python server in mean response time and handled requests per second.
+\cite{Chitra} compared REST based Node.js server to traditional web service written with C\# based .NET.
+They showed that for I/O intensive operations node.js showed good performance over .NET but
+for CPU intensive operations .NET server outperformed node.js server.
 These studies mainly focused on the throughput and response time of a servers through its application programming interfaces with different user scenarios.
-\subsection{Notes}
-Related studies, JavaScript benchmarks etc...
-% Tulosten merkitsevyys
+They showed that overall Node.js servers offers steady and scalable performance.
+The single threaded event loop of node.js isn't outperformed by multi threaded servers.
 
-\section{Future Studies}
-\subsection{Notes}
-Controlled Experiment to see if the results can be reproduced.
+Answering \textbf{RQ1} "How does refactoring Node.js component from monolith to microservice affect its performance?" we can say that the response time is decreases by $46.5\%$ when the component runs in independent service.
+Refactoring component to independent service isolates the component from the monolith environment allowing it to use all the available resources to handle related events in its own event loop.
+In monolith environment it is possible that once the event loop enter poll phase it handles offloaded I/O operations for the whole system.
+In independent system the poll phase is responsible for handling offloaded I/O operations only for the critical component.
+Isolating the critical component from other components isolates any blocking events and performance heavy operations from the critical component.
 
-Case study to measure other components performances in the studied system and see if there is a correlation with the results.
+Despite the drawback related to the refactoring it is beneficial to refactor performance critical component to its own service when response time of the component is important to the system.
+For a component, where the response time is not critical to the system, it is not practical to refactor it to independent service.
+The refactoring itself was a big task and the added workload for maintaining and deploying two applications instead of one increases the overall workload.
 
-See if the results are specific to javascirpt or if they can be reproduced with single threaded language like rust or multithreaded language like java or C\#
+The monolith and independent service was part of a production environment.
+Because of this it was not possible to control the used resources to provide equal hardware resources for both environments.
+The collected data still reflects that the independent service outperformed the monolith environment even when the monolith had $8$ times more RAM and CPU available.
+
+It was expected from the start the the independent services response time was faster in comparison to its monolith counterpart.
+The results and discussion might reflect this writers bias.
+The collected data is free from this bias since the response time of the component was independent from the writer although the introduction to the sample results might have been affected by the bias.
+The studied case was undergoing refactoring for benefit of a company there is an unlikely possibility that the results reflects the benefits of refactoring the component rather than concentrating on its drawbacks.
+
+For future studies it would be interesting to see how big the monolith has to be in order for it to start affecting the performance to its components.
+This can be achieved by performing an controlled experiment where components are systematically added to application and their response time measured.
+For the case it would be beneficial to measure the response time of other monolith components and see if the refactoring has same effect for them.
+This way it would be possible to eliminate  performance issues related to possible bad JavaScript code practises that affects the event loops throughput.
+No related studies were found where the components response time was measured it would be interesting to see if the results are node.js related or can they be reproduced in other programming languages and environments.
