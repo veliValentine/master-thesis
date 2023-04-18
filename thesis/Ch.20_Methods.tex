@@ -4,14 +4,13 @@ One research question is asked in order to answer if there is difference in serv
 Literature review is performed to find literature related to research question.
 Data collection methods provides insight related to the case and the research question.
 
-\section{Research questions}
 In order to see how the performance of Node.js component differs in monolith environment and microservice environment a research question is asked.
 
 \textbf{RQ1}: How does refactoring Node.js component from monolith to microservice affect its performance?
 
 Answering the research question \textbf{RQ1} should give us some insight what the performance of a Node.js component is as a part of a monolith environment and as a part of a microservice environment and is there any performance difference between these environments.
 
-\section{Literature}
+\section{Literature Review}
 Literature review was performed in order to find related literature that provides insight to \textbf{RQ1}.
 The review was performed in order to find studies that are related to performance of node.js application, performance changes when refactoring component from monolith to microservice and node.js V8 benchmarks.
 
@@ -20,15 +19,13 @@ Review protocol was defined in order to provide reproducible framework for revie
 The review protocol is following:
 \begin{enumerate}
     \item Define the review protocol. This step defines used search engines, used search string, inclusion and exclusion criteria.
-    \item Search literature from defined engines using defined search string.
-    \item Review results from previous step according to inclusion criteria.
-    \item Review results from previous step according to exclusion criteria.
+    \item Search literature following the review protocol.
+    \item Include found literature following the review protocol.
+    \item Exclude found literature following the review protocol.
 \end{enumerate}
 
-In order to find literature that gives insight to \textbf{RQ1} a literature search was performed.
 Four different search engines were selected to be used for finding related literature.
 Used engines can be seen in table \ref{table:literature:searchEngines}.
-
 \begin{table}[ht!]
     \begin{tabular}{| c | c |} 
         \hline
@@ -55,19 +52,17 @@ Used engines can be seen in table \ref{table:literature:searchEngines}.
     \caption{Used search engines.}
     \label{table:literature:searchEngines}
 \end{table}
-
 Search was performed using search string that matches literature title only.
 The search string was modified using documentation of used search engine allowing results not to be limited for any spelling differences.
 For example search including "microservice" was modified so that "micro-service" and similar differences were included in the results.
-Search string used before modifications was "\textit{performance AND (V8 OR JavaScript OR Node.js OR (microservice AND monolith))}".
+Search string used without modifications was "\textit{performance AND (V8 OR JavaScript OR Node.js OR (microservice AND monolith))}".
 
 Results from search were reviewed based on inclusion criteria seen on table \ref{table:literature:inclusionCriteria}.
 Each results title and abstracts were review according to inclusion criterion.
 Each criterion were given zero, one or two points based on their relevance to the criterion.
 Zero points were given to results that has no relevance to the criterion, one point to results that has some relevance to criterion and two points to results that are relevant to the criterion.
 The points system can be seen in table \ref{table:literature:pointSystem}.
-Inclusion score for a result was the sum of points from each criterion.
-Each results could receive minimum of $0$ points and maximum of $14$ points.
+Inclusion score was the sum of points from each criterion with minimum inclusion score of $0$ points and maximum of $14$ points.
 
 \begin{table}[ht!]
     \begin{tabular}{|c c|} 
@@ -134,26 +129,22 @@ Literature that were not available, i.e. not available for university of Helsink
 \end{table}
 
 Final results contained 16 out of 146 related literature.
-Detailed results and review is found in the results chapter.
+Detailed results and review can be found in the results chapter.
 
 \section{Collecting Sample Data}
-To measure the performance of the component a series of data points were collected along each cycle.
-The performance data were collected from both environments sequentially over two month period.
-The environments were running in production with real data.
-In the first environment the component was integrated as a part of monolith application.
-In the second environment the component was refactored into independent service containing only the studied component and the needed functionality for communication with the component.
+To measure the performance of the component a series of data points were collected along all cycles.
+The data was collected sequentially over two month period first from independent service and then from monolith.
+The components were using real production data so it was important that the environments won't affect each other during runtime.
 
-To measured performance of the component a sample of data points were collected at run-time.
-Each data point contains the cycle identification number, the run-time environment, system timestamp and information from system hardware.
-A single data point contains all these values.
-\textbf{TODO describe in more detail}
+To measured performance of the component a sample of data points were collected at run time.
+Single datap point contained:
 \begin{enumerate}
-    \item Cycle id
-    \item Run-time environment id
-    \item System time (in nanoseconds)
-    \item System free memory (in bytes)
-    \item System total memory (in bytes)
-    \item Used CPU percentage (used CPU over total usable CPU)
+    \item Cycle id. A way to identify and group collected data to single cycle.
+    \item Run-time environment id. An id to separate the collected data between the used environments.
+    \item System time (in nanoseconds). Systems timestamp in nanoseconds at the collected time.
+    \item System free memory (in bytes). The available free memory that the application is able to consume at the collected time.
+    \item System total memory (in bytes). The total memory that the used hardware is able to provide at the collected time.
+    \item Used CPU percentage. Ratio of the used CPU power over the total available CPU power at the collected time.
 \end{enumerate}
 
 The cycle id is unique for each cycle and environment.

@@ -2,8 +2,9 @@
 Literature review results and analysis on the collected data are shown in this chapter.
 
 \section{Literature}
-Literature review used four search engines that provided 147 initial results when using defined search string.
-93 out of 147 search results were unique.
+Literature review was performed to find related literature to \textbf{RQ1}.
+Review used four search engines that provided 147 initial results when using defined search string.
+From the 147 initial search results 93 were unique.
 \begin{table}[ht!]
     \begin{tabular}{|c c|} 
         \hline
@@ -36,7 +37,7 @@ Literature review used four search engines that provided 147 initial results whe
     \label{table:literature:initialSearchResults}
 \end{table}
 Search results title and abstract was reviewed against inclusion criteria.
-Highest score received was eight for three unique results and lowest score zero for 24 unique results.
+Highest score received was 8 out of 14 for three unique results and lowest score 0 out of 14 for 24 unique results.
 Three results didn't have an abstract to review so they were excluded from the review at this point.
 Table \ref{table:literature:inclusionResults} shows inclusion score among initial search results.
 \begin{table}[ht!]
@@ -48,55 +49,55 @@ Table \ref{table:literature:inclusionResults} shows inclusion score among initia
         & Included Literature Id
         \\ 
         \hline\hline
-        Score 8
+        Score 8/14
         & 7
         & 3
         & 1, 2, 3
         \\ 
         \hline
-        Score 7
+        Score 7/14
         & 4
         & 2
         & All excluded
         \\ 
         \hline
-        Score 6
+        Score 6/14
         & 4
         & 4
         & 4
         \\ 
         \hline
-        Score 5
+        Score 5/14
         & 16
         & 8
         & 5, 6, 7, 8
         \\ 
         \hline
-        Score 4
+        Score 4/14
         & 17
         & 11
         & 9, 10, 11, 12
         \\ 
         \hline
-        Score 3
+        Score 3/14
         & 23
         & 14
         & Not included
         \\ 
         \hline
-        Score 2
+        Score 2/14
         & 36
         & 20
         & Not included
         \\ 
         \hline
-        Score 1
+        Score 1/14
         & 9
         & 4
         & Not included
         \\ 
         \hline
-        Score 0
+        Score 0/14
         & 28
         & 24
         & Not included
@@ -118,9 +119,9 @@ Table \ref{table:literature:inclusionResults} shows inclusion score among initia
     \caption{Literature inclusion scores}
     \label{table:literature:inclusionResults}
 \end{table}
-After excluding results with inclusion score less than 3.5, a total of 28 unique results were review.
+After excluding results with inclusion score less than 3.5 a total of 28 unique results were review.
 Out of the 28 included results 16 were excluded based on exclusion criteria leaving a total of 12 results relevant to \textbf{RQ1} as shown in table \ref{table:literature:results}.
-As shown in table \ref{table:literature:resulstByCategory} most of the found literature, $50\%$, compares node.js web server with other programming languages like python and PHP.
+As shown in table \ref{table:literature:resulstByCategory} most of the found literature, $50\%$, compares node.js web server with other programming languages like .net, python and PHP.
 One results studied performance impact when monolith application was migrated to microservice.
 Other study studied the performance impact of JavaScript API with different JavaScript engines.
 
@@ -271,7 +272,7 @@ The results for monolith are shown in table \ref{table:hardware results:monolith
 In the monolith environment $206965$ hardware samples was collected from $1649$ full cycles.
 From the independent service a total of $26902$ hardware samples was collected from $205$ full cycles.
 The hardware samples were collected along response time timestamps.
-Hardware samples only reflects the CPU utilization and the system memory status at the point of the timestamp collection and not the status during any meaningful process in the component.
+Hardware samples only reflects the systems CPU utilization and memory usage at the point of the timestamp collection and not the status during any meaningful process in the component.
 
 \begin{table}[ht!]
     \begin{tabular}{|c|c|c|c|} 
@@ -312,7 +313,7 @@ The CPU utilization percentage was calculated as
 \[
 \textit{Utilization percentage} = 100 \cdot \frac{\textit{Available CPU}}{\textit{Total CPU}}
 .\]
-Where the available CPU is the number of milliseconds the system has spend in the user mode.
+Where available CPU is the number of milliseconds the system has spend in the user mode.
 The total CPU is the sum of milliseconds the system has spend on user, system and idle modes. The CPU utilization is shown in tables \ref{table:hardware results:monolith:1} and \ref{table:hardware results:independent service:1}.
 
 Collected samples shows that the CPU utilization percentage didn't have any noted effect on the performance since the maximum CPU utilization was at $36.0\%$ in the monolith environment and $1.0\%$ in the independent service.
@@ -322,7 +323,7 @@ The mean CPU utilization in the monolith is 24 percentage points higher compared
 Collected hardware samples contained information about the free memory and the total available memory for the system.
 In table \ref{table:hardware results:monolith:1} the memory data is shown for the monolith application and in table \ref{table:hardware results:independent service:1} for the independent service.
 The minimum available memory for the system in monolith was around $0.609...\%$ and in independent service around $61.233...\%$.
-These benchmarks was calculated using the following formula
+Minimum available memory was calculated with the following formula:
 \[
 \textit{Minimum available memory} = 100 \cdot \frac{\textit{Minimum free memory}}{\textit{Maximum total memory}}
 .\]
@@ -465,31 +466,13 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
     \label{table:response time results:3}
 \end{table}
 
-\begin{table}[ht!]
-    \begin{tabular}{|c|c|c|} 
-        \hline
-        \textbf{To Do}
-        & Show mean, min and max values from both environments next to each other.
-        \\
-        \hline
-        \textbf{To Do}
-        & Show mean value with 95th-percentile confidence interval.
-        \\ [0.5ex] 
-        \hline
-    \end{tabular}
-    \caption{Bar graph for samples. 95th-percentile confidence intervals}
-    \label{grap:response time results:bar-95th}
-\end{table}
-
 \subsubsection{Sample Results}
 The component performance was not limited by the hardware according to the collected hardware sample.
 Most of the systems CPU was unused and average of at least $11.8\%$ free memory was available for the systems to use.
 
 The response time being $\sim 1.87$ times faster in independent service when compared to monolith environment.
 Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
-To see if there is statistically relevant difference in the components response time a significance test was performed.
 
 Collected samples were affected by the runtime condition since the data was collected from production environments.
-Collected sample sizes differs by over a thousand samples.
-Because only full cycles were included in the analysis partial cycles are excluded from the analysis.
-The data doesn't show how often the cycles were offline requiring manual restart from the user.
+Collected sample sizes differs by over a thousand sample because only full cycles were included in the analysis.
+The data doesn't show how often the component was not running due the required user input for restarts.
