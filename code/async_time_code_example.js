@@ -3,16 +3,16 @@ const runModuleA = async (timer) => {
   
   // Save data point before non blocking operation
   timer.saveEvent({
-    eventId: 'id ',
+    eventId: 'uniqueIdForTheEvent',
     before: true
   })
 
   // code that performs non blocking operation
-  await asyncCode()
+  await asyncCodeEvent()
   
   // Save data point after non blocking operation
   timer.saveEvent({
-    eventId: 'id ',
+    eventId: 'uniqueIdForTheEvent',
     before: false
   })
 
