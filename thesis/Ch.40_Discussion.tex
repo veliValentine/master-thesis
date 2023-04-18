@@ -15,14 +15,14 @@ The component was not modified during the refactoring so it is impossible that a
 There are many studies related to the performance of node.js applications that studied and compared node.js server performance to servers written in other programming languages.
 \cite{Challapalli}, \cite{Lion} and many others compared performance of node.js server to servers build with different programming languages including python, .NET, java, c++, php etc.
 \cite{Challapalli} compared node.js server to pythons server and showed that the node.js server outperformed python server in mean response time and handled requests per second.
-\cite{Chitra} compared REST based Node.js server to traditional web service written with C\# based .NET.
+\cite{Chitra} compared REST based node.js server to traditional web service written with C\# based .NET.
 They showed that for I/O intensive operations node.js showed good performance over .NET but
 for CPU intensive operations .NET server outperformed node.js server.
 These studies mainly focused on the throughput and response time of a servers through its application programming interfaces with different user scenarios.
-They showed that overall Node.js servers offers steady and scalable performance.
+They showed that overall node.js servers offers steady and scalable performance.
 The single threaded event loop of node.js isn't outperformed by multi threaded servers.
 
-Answering \textbf{RQ1} "How does refactoring Node.js component from monolith to microservice affect its performance?" we can say that the response time is decreases by $46.5\%$ when the component runs in independent service.
+Answering \textbf{RQ1} "How does refactoring node.js component from monolith to microservice affect its performance?" we can say that the response time is decreases by $46.5\%$ when the component runs in independent service.
 Refactoring component to independent service isolates the component from the monolith environment allowing it to use all the available resources to handle related events in its own event loop.
 In monolith environment it is possible that once the event loop enter poll phase it handles offloaded I/O operations for the whole system.
 In independent system the poll phase is responsible for handling offloaded I/O operations only for the critical component.
