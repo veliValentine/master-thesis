@@ -4,24 +4,24 @@ One research question is asked in order to answer if there is difference in serv
 Literature review is performed to find literature related to research question.
 Data collection methods provides insight related to the case and the research question.
 
-In order to see how the performance of Node.js component differs in monolith environment and microservice environment a research question is asked.
+In order to see how the performance of node.js component differs in monolith environment and microservice environment a research question is asked.
 
-\textbf{RQ1}: How does refactoring Node.js component from monolith to microservice affect its performance?
+\textbf{RQ1}: How does refactoring node.js component from monolith to microservice affect its performance?
 
-Answering the research question \textbf{RQ1} should give us some insight what the performance of a Node.js component is as a part of a monolith environment and as a part of a microservice environment and is there any performance difference between these environments.
+Answering the research question \textbf{RQ1} should give us some insight what the performance of a node.js component is as a part of a monolith environment and as a part of a microservice environment and is there any performance difference between these environments.
 
 \section{Literature Review}
 Literature review was performed in order to find related literature that provides insight to \textbf{RQ1}.
-The review was performed in order to find studies that are related to performance of node.js application, performance changes when refactoring component from monolith to microservice and node.js V8 benchmarks.
+The review aimed to find literature related to performance of node.js application, performance changes when refactoring component from monolith to microservice, and node.js, javascript and V8 benchmarks.
 
 The review was performed using review protocol that included four steps.
 Review protocol was defined in order to provide reproducible framework for reviewing found literature.
 The review protocol is following:
 \begin{enumerate}
-    \item Define the review protocol. This step defines used search engines, used search string, inclusion and exclusion criteria.
-    \item Search literature following the review protocol.
-    \item Include found literature following the review protocol.
-    \item Exclude found literature following the review protocol.
+    \item Define the review protocol. This step defines used search engines, search string, inclusion and exclusion criteria.
+    \item Search literature following the review protocol. This step performs the search.
+    \item Include found literature following the review protocol. This step reviews the searched literature and analyzes their relevance to \textbf{RQ1}.
+    \item Exclude found literature following the review protocol. This step exclude all found literature not relevean to \textbf{RQ1}.
 \end{enumerate}
 
 Four different search engines were selected to be used for finding related literature.
@@ -31,23 +31,25 @@ Used engines can be seen in table \ref{table:literature:searchEngines}.
         \hline
         Engine
         & Url
-        \\ [0.5ex] \hline
+        \\ [0.5ex]
+        \hline\hline
         
         Helka (University of Helsinki library)
         & \url{https://helka.helsinki.fi/}
-        \\ \hline
+        \\
         
         IEEE Xplore
         & \url{https://ieeexplore.ieee.org}
-        \\ \hline
+        \\
         
         Google Scholar
         & \url{https://scholar.google.com/}
-        \\ \hline
+        \\
 
         Scopus
         & \url{https://www.scopus.com/home.uri}
-        \\ \hline
+        \\
+        \hline
     \end{tabular}    
     \caption{Used search engines.}
     \label{table:literature:searchEngines}
@@ -67,22 +69,30 @@ Inclusion score was the sum of points from each criterion with minimum inclusion
 \begin{table}[ht!]
     \begin{tabular}{|c c|} 
         \hline
-        Criteria & Description \\ [0.5ex] 
-        \hline
-        Cr.1 & JavaScript performance review
+        Inclusion Criteria 
+        & Description \\ [0.5ex] 
+        \hline\hline
+        Cr.1
+        & JavaScript performance review
         \\ 
-        \hline
-        Cr.2 & Node.js performance review  \\ 
-        \hline
-        Cr.3 & Server side performance review  \\ 
-        \hline
-        Cr.4 & V8 engine performance review  \\ 
-        \hline
-        Cr.5 & Monolith performance review  \\ 
-        \hline
-        Cr.6 & Microservice performance review  \\ 
-        \hline
-        Cr.7 & Response time performance review  \\ 
+        
+        Cr.2
+        & Node.js performance review  \\ 
+        
+        Cr.3
+        & Server side performance review  \\ 
+        
+        Cr.4
+        & V8 engine performance review  \\ 
+        
+        Cr.5
+        & Monolith performance review  \\ 
+        
+        Cr.6
+        & Microservice performance review  \\ 
+        
+        Cr.7
+        & Response time performance review  \\ 
         \hline
     \end{tabular}    
     \caption{Inclusion Criteria.}
@@ -93,11 +103,11 @@ Inclusion score was the sum of points from each criterion with minimum inclusion
     \begin{tabular}{|c c|}
         \hline
         Description & Points \\ [0.5ex] 
-        \hline
+        \hline\hline
          No relevance to the criterion & 0  \\ 
-        \hline
+        
         Some relevance to the criterion & 1 \\ 
-        \hline
+        
         Relevant to the criterion & 2 \\ 
         \hline
     \end{tabular}
@@ -114,13 +124,13 @@ Literature that were not available, i.e. not available for university of Helsink
     \begin{tabular}{|c c|} 
         \hline
         Criteria & Description \\ [0.5ex] 
-        \hline
+        \hline\hline
         Cr.1 & Inclusion score less than 3.5 \\
-        \hline
+        
         Cr.2 & Only client side performance  \\
-        \hline
+        
         Cr.3 & Not available \\
-        \hline
+        
         Cr.4 & Not in English \\
         \hline
     \end{tabular}    
@@ -128,43 +138,60 @@ Literature that were not available, i.e. not available for university of Helsink
     \label{table:literature:exclusionCriteria}
 \end{table}
 
-Final results contained 16 out of 146 related literature.
+Final results contained 12 out of 146 related literature.
 Detailed results and review can be found in the results chapter.
 
 \section{Collecting Sample Data}
 To measure the performance of the component a series of data points were collected along all cycles.
-The data was collected sequentially over two month period first from independent service and then from monolith.
 The components were using real production data so it was important that the environments won't affect each other during runtime.
+The data was collected sequentially over two month period first from independent service and then from monolith.
 
 To measured performance of the component a sample of data points were collected at run time.
-Data points were collected at the start and end of each cycle
+The collected data points contained timestamps in order to measure the response time of blocking code of the component, and hardware data to see if the components response time was impacted by used hardware.
+Data points were collected at the start and at the end of each cycle, and from any non blocking event as seen in examples \ref{code:modules} and \ref{code:nonNlocking}.
+Data points were saved along a cycle and persisted at the end of the cycle.
+Sometimes a cycle was interrupted by an error leaving partial data to be persisted.
+Partial data were excluded from the sample analysis.
 Single data point contained:
 \begin{enumerate}
-    \item Cycle id. A way to identify and group collected data to single cycle.
+    \item Cycle id. An unique identifier that is used for grouping collected data to single cycle.
     \item Run-time environment id. An id to separate the collected data between the used environments.
-    \item System time (in nanoseconds). Systems timestamp in nanoseconds at the collected time.
+    \item System timestamp. Systems timestamp in nanoseconds at the collected time.
     \item System free memory (in bytes). The available free memory that the application is able to consume at the collected time.
     \item System total memory (in bytes). The total memory that the used hardware is able to provide at the collected time.
     \item Used CPU percentage. Ratio of the used CPU power over the total available CPU power at the collected time.
 \end{enumerate}
-
-The cycle id is unique for each cycle and environment.
-The system time and run-time environment were collected to collect data required to measure the response time.
-The memory and CPU usages were collected to ensure that the system had enough resources to operate.
-Data were collected along each cycle.
-This included the start and end of the cycle, and before and after each external data call.
-The data was saved at run-time and persisted at the end of each cycle.
-Sometimes the cycle was interrupted by an error or the collected data was not complete resulting partial data to be persisted.
-
-In code example \ref{code:modules} it is shown how the modules are run and how data is collected from the start and end of the cycles.
 \begin{table}
     \lstinputlisting{code/data_sample_pseudo_code.js}
     \caption{Pseudo code running modules.}
     \label{code:modules}
 \end{table}
-In example \ref{code:nonNlocking} it is shown how the data points for non blocking code is collected.
 \begin{table}
     \lstinputlisting{code/async_time_code_example.js}
     \caption{Pseudo code for collecting non blocking data points.}
     \label{code:nonNlocking}
 \end{table}
+
+In order to calculate the response time of blocking code for $n$-th cycle the following formula was used:
+\[
+\textit{ResponseTime}_n
+=\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
+\]
+where $n$ is the nth cycle from samples and $m$ is the made external calls for the cycle.
+A cycles response time $\textit{cycleResponseTime}_n$ is the difference in collected end and start timestamps for the $n$-th cycle.
+\[
+\textit{cycleResponseTime}_n=\textit{cycleEndTimestamp}_n - \textit{cycleStartTimestamp}_n
+.\]
+The $\textit{cycleResponseTime}_n$ contains the response time of a cycle including all blocking and non blocking code.
+The $\textit{externalCallResponseTimes}_n$ contains the response time of all non blocking code for the $n$-th cycle.
+\[
+\textit{externalCallResponseTimes}_n = \sum_{i=1}^{\textit{m}} (\textit{afterExternalCall}_{ni} -     \textit{beforeExternalCall}_{ni})
+,\] where $\textit{afterExternalCall}_{ni}$ is the \textit{after} timestamp for the $i$-th non blocking call in the $n$-th cycle, and the $\textit{beforeExternalCall}_{ni}$ is the \textit{before} timestamp for the $i$-th non blocking call in the $n$-th cycle.
+
+
+% \begin{gather*}
+% \textit{ResponseTime}_n
+% \\ =\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
+% \\ = \textit{cycleEndTimestamp}_n - \textit{cycleStartTimestamp}_n - 
+    % \sum_{i=1}^{\textit{m}} (\textit{afterExternalCall}_{ni} -     \textit{beforeExternalCall}_{ni}),
+% \end{gather*}

@@ -82,7 +82,7 @@ all of the modules response time is critical to the system.
     After it is finished the cycle is restarted from \textbf{module A}.
 \end{itemize}
 
-The components is dependent on the user input that decides if the component is running or not.
+The components is dependent on the input parameters that decides when the component can continue the cycles.
 Modules A, C and D are dependent on external data.
 Module D is dependent on module C and module C is dependent on module A.
 The dependencies of the modules can be seen in figure \ref{figure:module:relation}.
@@ -104,13 +104,6 @@ The flowchart of the modules are shown in figure \ref{figure:module:flow}.
 When any of the modules fails to perform its task an error is raised and the cycle is interrupted.
 Error at any point of the cycles requires manual restart from the user.
 When modules are running without errors the modules A and B are always performed. 
-The modules C and D are run only when the data from \textbf{module A} requires them to run.
+The modules C and D are run only when the data from module A requires them to run.
 Each module waits for the response of external calls before continuing their process.
-A full cycle requires succesful run from all four modules.
-
-This research studies performance of a server side JavaScript software component.
-Performance is defined as the time the component takes to processing its blocking events.
-All non blocking calls from the component are timed and excluded from the performance review in order to capture the response time of all blocking events in the component.
-The component performance is measured when it is a part of a monolith application and when it is refactored into its own service.
-The component is not modified between environments.
-The components performance is critical tot he system.
+A full cycle requires successful run from all four modules.

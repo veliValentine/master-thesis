@@ -1,7 +1,7 @@
 \chapter{Results\label{results}}
-Literature review results and analysis on the collected data are shown in this chapter.
+The performed literature review results and the collected data analysis is described in this chapter.
 
-\section{Literature}
+\section{Literature Review}
 Literature review was performed to find related literature to \textbf{RQ1}.
 Review used four search engines that provided 147 initial results when using defined search string.
 From the 147 initial search results 93 were unique.
@@ -15,15 +15,15 @@ From the 147 initial search results 93 were unique.
         Helka (University of Helsinki library)
         & 46
         \\ 
-        \hline
+        
         IEEE Xplore
         & 26
         \\ 
-        \hline
+        
         Google Scholar
         & 7
         \\ 
-        \hline
+        
         Scopus
         & 68
         \\ 
@@ -54,55 +54,55 @@ Table \ref{table:literature:inclusionResults} shows inclusion score among initia
         & 3
         & 1, 2, 3
         \\ 
-        \hline
+        
         Score 7/14
         & 4
         & 2
         & All excluded
         \\ 
-        \hline
+        
         Score 6/14
         & 4
         & 4
         & 4
         \\ 
-        \hline
+        
         Score 5/14
         & 16
         & 8
         & 5, 6, 7, 8
         \\ 
-        \hline
+        
         Score 4/14
         & 17
         & 11
         & 9, 10, 11, 12
         \\ 
-        \hline
+        
         Score 3/14
         & 23
         & 14
-        & Not included
+        & All excluded
         \\ 
-        \hline
+        
         Score 2/14
         & 36
         & 20
-        & Not included
+        & All excluded
         \\ 
-        \hline
+        
         Score 1/14
         & 9
         & 4
-        & Not included
+        & All excluded
         \\ 
-        \hline
+        
         Score 0/14
         & 28
         & 24
-        & Not included
+        & All excluded
         \\ 
-        \hline
+        
         Not available
         & 3
         & 3
@@ -112,7 +112,7 @@ Table \ref{table:literature:inclusionResults} shows inclusion score among initia
         Total
         & 147
         & 93
-        & -
+        & 12
         \\ 
         \hline
     \end{tabular}    
@@ -135,47 +135,47 @@ Other study studied the performance impact of JavaScript API with different Java
         1
         & \cite{Dafni}
         \\ 
-        \hline
+        
         2
         & \cite{Tilkov}
         \\ 
-        \hline
+        
         3
         & \cite{Chitra}
         \\ 
-        \hline
+        
         4
         & \cite{Shkodra}
         \\ 
-        \hline
+        
         5
         & \cite{Chaniotis}
         \\ 
-        \hline
+        
         6
         & \cite{NkenyereyeLionel2016PEoN}
         \\ 
-        \hline
+        
         7
         & \cite{faustino}
         \\ 
-        \hline
+        
         8
         & \cite{Challapalli}
         \\ 
-        \hline
+        
         9
         & \cite{Kyriakou}
         \\ 
-        \hline
+        
         10
         & \cite{Kyriakou}
         \\ 
-        \hline
+        
         11
         & \cite{Lei}
         \\ 
-        \hline
+        
         12
         & \cite{SelakovicPerformanceIssues}
         \\ 
@@ -196,59 +196,59 @@ Other study studied the performance impact of JavaScript API with different Java
         Node.js I/O performance
         & 1, 10, 11
         \\ 
-        \hline
+    
         Description of Node.js as network program
         & 2
         \\ 
-        \hline
+    
         Node.js benchmarks
         & 5, 6, 10
         \\ 
-        \hline
+    
         Node.js IoT server
         & 6
         \\ 
-        \hline
+    
         Migration from monolith to microservice
         & 7
         \\ 
-        \hline
+    
         Achieving efficient power usage by scaling CPU frequency
         & 10
         \\ 
-        \hline
+    
         Inefficient usage of JavaScript internal APIs effects to performance
         & 12
         \\ 
-        \hline
+    
         Comparison of node.js web server with other programming language
         & 3, 4, 5, 8, 9, 11
         \\ 
-        \hline
+    
         Comparison against PHP/Apache
         & 5
         \\ 
-        \hline
+    
         Comparison against PHP
         & 11
         \\ 
-        \hline
+    
         Comparison against Nginx
         & 5
         \\
-        \hline
+    
         Comparison against .NET
         & 3, 4
         \\
-        \hline
+    
         Comparison against python
         & 8, 11
         \\
-        \hline
+    
         Comparison against rust
         & 9
         \\
-        \hline
+    
         Comparison against web assembly
         & 9
         \\
@@ -275,7 +275,7 @@ The hardware samples were collected along response time timestamps.
 Hardware samples only reflects the systems CPU utilization and memory usage at the point of the timestamp collection and not the status during any meaningful process in the component.
 
 \begin{table}[ht!]
-    \begin{tabular}{|c|c|c|c|} 
+    \begin{tabular}{|c c c c|} 
         \hline
         Monolith
         & CPU (\%)
@@ -336,15 +336,6 @@ The mean available memory was around $11.807...\%$ in monolith and $66.121...\%$
 Timestamp samples were collected from both environments to measure the response time of the component.
 The results are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}.
 Start and end timestamps of each cycle were collected along the timestamps before and after all external calls made from the component.
-The response time for a cycle was calculated with the following formula:
-\begin{gather*}
-\textit{ResponseTime}_n
-\\ =\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
-\\ = \textit{cycleEndTimestamp}_n - \textit{cycleStartTimestamp}_n - 
-    \sum_{i=1}^{\textit{m}} (\textit{afterExternalCall}_{ni} -     \textit{beforeExternalCall}_{ni}),
-\end{gather*}
-where $n$ is the nth cycle from samples and $m$ is the made external calls for the cycle.
-The timestamps were persisted after each cycle.
 
 Collected samples contained $1649$ full cycles from monolith environment with mean response time of $\sim198.7$ms.
 The mean value was $\sim2.48$ times slower against the minimum value of $\sim 80.2$ms and $\sim5.94$ times faster when compared to the maximum value of $\sim1180.6$ms in the monolith environment.
@@ -356,7 +347,7 @@ Mean response time in monolith was $\sim1.87$ times slower when compared to the 
 The minimum value in the monolith was $\sim 66.63$ percentage points greater that the minimum value in the independent service and the maximum value in the monolith was $\sim 213.57$ percentage points greater when compared to the maximum value in the independent service.
 
 \begin{table}[ht!]
-       \begin{tabular}{|c|c|c|c|} 
+       \begin{tabular}{|c c c c|} 
         \hline
         Independent Service
         & CPU (\%)
@@ -394,7 +385,7 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
 \end{table}
 
 \begin{table}[ht!]
-    \begin{tabular}{|c|c|c|c|} 
+    \begin{tabular}{|c c c c|} 
         \hline
         Environment
         & Count (n)
@@ -421,7 +412,7 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
 \end{table}
 
 \begin{table}[ht!]
-    \begin{tabular}{|c|c|c|} 
+    \begin{tabular}{|c c c|} 
         \hline
         Environment
         & Min (ms)
@@ -444,7 +435,7 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
 \end{table}
 
 \begin{table}[ht!]
-    \begin{tabular}{|c|c|c|} 
+    \begin{tabular}{|c c c|} 
         \hline
         Environment
         & Standard Deviation (ns)
