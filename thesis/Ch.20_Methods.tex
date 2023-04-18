@@ -137,7 +137,8 @@ The data was collected sequentially over two month period first from independent
 The components were using real production data so it was important that the environments won't affect each other during runtime.
 
 To measured performance of the component a sample of data points were collected at run time.
-Single datap point contained:
+Data points were collected at the start and end of each cycle
+Single data point contained:
 \begin{enumerate}
     \item Cycle id. A way to identify and group collected data to single cycle.
     \item Run-time environment id. An id to separate the collected data between the used environments.
@@ -155,4 +156,15 @@ This included the start and end of the cycle, and before and after each external
 The data was saved at run-time and persisted at the end of each cycle.
 Sometimes the cycle was interrupted by an error or the collected data was not complete resulting partial data to be persisted.
 
-\lstinputlisting[]{code/data_sample_pseudo_code.js}
+In code example \ref{code:modules} it is shown how the modules are run and how data is collected from the start and end of the cycles.
+\begin{table}
+    \lstinputlisting{code/data_sample_pseudo_code.js}
+    \caption{Pseudo code running modules.}
+    \label{code:modules}
+\end{table}
+In example \ref{code:nonNlocking} it is shown how the data points for non blocking code is collected.
+\begin{table}
+    \lstinputlisting{code/async_time_code_example.js}
+    \caption{Pseudo code for collecting non blocking data points.}
+    \label{code:nonNlocking}
+\end{table}
