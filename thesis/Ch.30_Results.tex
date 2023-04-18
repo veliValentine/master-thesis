@@ -2,52 +2,260 @@
 Literature review results and analysis on the collected data are shown in this chapter.
 
 \section{Literature}
-Literature review results.
-
-\subsubsection{Literature Search}
-\textbf{ToDo Search results}
-
-The search returned \textbf{HITS} hits.
-Search results are shown in table \ref{table:literature:searchResults}.
-
+Literature review used four search engines that provided 147 initial results when using defined search string.
+93 out of 147 search results were unique.
 \begin{table}[ht!]
-    \begin{tabular}{|c|c|c|c|} 
+    \begin{tabular}{|c c|} 
         \hline
         Search Engine
         & Search Hits
-        & Unique Hits
-        & Duplicate Hits
+        \\ 
+        \hline\hline
+        Helka (University of Helsinki library)
+        & 46
+        \\ 
+        \hline
+        IEEE Xplore
+        & 26
+        \\ 
+        \hline
+        Google Scholar
+        & 7
+        \\ 
+        \hline
+        Scopus
+        & 68
+        \\ 
+        \hline
+        Total
+        & 147
         \\ 
         \hline
     \end{tabular}    
-    \caption{Literature Search Results}
-    \label{table:literature:searchResults}
+    \caption{Initial search results of related literature}
+    \label{table:literature:initialSearchResults}
 \end{table}
-
-\subsubsection{Included Literature}
-\textit{Text containing included literature and results per engine}.
-Results with inclusion score can be found in table \ref{table:literature:inclusionResults}
-
+Search results title and abstract was reviewed against inclusion criteria.
+Highest score received was eight for three unique results and lowest score zero for 24 unique results.
+Three results didn't have an abstract to review so they were excluded from the review at this point.
+Table \ref{table:literature:inclusionResults} shows inclusion score among initial search results.
 \begin{table}[ht!]
-    \begin{tabular}{| c | c | c |}
+    \begin{tabular}{|c c c c|} 
         \hline
-        Id
-        & Title
-        & Inclusion Score
-        \\
+        Inclusion Score
+        & Count (n)
+        & Unique Count (n)
+        & Included Literature Id
+        \\ 
+        \hline\hline
+        Score 8
+        & 7
+        & 3
+        & 1, 2, 3
+        \\ 
         \hline
-    \end{tabular}
-    \caption{Results with given relevance score}
+        Score 7
+        & 4
+        & 2
+        & All excluded
+        \\ 
+        \hline
+        Score 6
+        & 4
+        & 4
+        & 4
+        \\ 
+        \hline
+        Score 5
+        & 16
+        & 8
+        & 5, 6, 7, 8
+        \\ 
+        \hline
+        Score 4
+        & 17
+        & 11
+        & 9, 10, 11, 12
+        \\ 
+        \hline
+        Score 3
+        & 23
+        & 14
+        & Not included
+        \\ 
+        \hline
+        Score 2
+        & 36
+        & 20
+        & Not included
+        \\ 
+        \hline
+        Score 1
+        & 9
+        & 4
+        & Not included
+        \\ 
+        \hline
+        Score 0
+        & 28
+        & 24
+        & Not included
+        \\ 
+        \hline
+        Not available
+        & 3
+        & 3
+        & Not included
+        \\ 
+        \hline
+        Total
+        & 147
+        & 93
+        & -
+        \\ 
+        \hline
+    \end{tabular}    
+    \caption{Literature inclusion scores}
     \label{table:literature:inclusionResults}
 \end{table}
+After excluding results with inclusion score less than 3.5, a total of 28 unique results were review.
+Out of the 28 included results 16 were excluded based on exclusion criteria leaving a total of 12 results relevant to \textbf{RQ1} as shown in table \ref{table:literature:results}.
+As shown in table \ref{table:literature:resulstByCategory} most of the found literature, $50\%$, compares node.js web server with other programming languages like python and PHP.
+One results studied performance impact when monolith application was migrated to microservice.
+Other study studied the performance impact of JavaScript API with different JavaScript engines.
 
-\subsubsection{Excluded Literature}
-\textit{Text that shows the result after reviewing results from exclusion}
+\begin{table}[ht!]
+    \begin{tabular}{|c c |} 
+        \hline
+        Literature Id
+        & Citation
+        \\ 
+        \hline\hline
+        1
+        & \cite{Dafni}
+        \\ 
+        \hline
+        2
+        & \cite{Tilkov}
+        \\ 
+        \hline
+        3
+        & \cite{Chitra}
+        \\ 
+        \hline
+        4
+        & \cite{Shkodra}
+        \\ 
+        \hline
+        5
+        & \cite{Chaniotis}
+        \\ 
+        \hline
+        6
+        & \cite{NkenyereyeLionel2016PEoN}
+        \\ 
+        \hline
+        7
+        & \cite{faustino}
+        \\ 
+        \hline
+        8
+        & \cite{Challapalli}
+        \\ 
+        \hline
+        9
+        & \cite{Kyriakou}
+        \\ 
+        \hline
+        10
+        & \cite{Kyriakou}
+        \\ 
+        \hline
+        11
+        & \cite{Lei}
+        \\ 
+        \hline
+        12
+        & \cite{SelakovicPerformanceIssues}
+        \\ 
+        \hline
+    \end{tabular}    
+    \caption{Literature review results.}
+    \label{table:literature:results}
+\end{table}
 
 
-\subsubsection{Final result}
-\textit{Summary about the results and analysis what is performance in the results and how it was collected}
-\textit{Tables about the results - Articles grouped by related category and criteria}
+\begin{table}[ht!]
+    \begin{tabular}{|c c|} 
+        \hline
+        Category
+        & Literature Id
+        \\ 
+        \hline\hline
+        Node.js I/O performance
+        & 1, 10, 11
+        \\ 
+        \hline
+        Description of Node.js as network program
+        & 2
+        \\ 
+        \hline
+        Node.js benchmarks
+        & 5, 6, 10
+        \\ 
+        \hline
+        Node.js IoT server
+        & 6
+        \\ 
+        \hline
+        Migration from monolith to microservice
+        & 7
+        \\ 
+        \hline
+        Achieving efficient power usage by scaling CPU frequency
+        & 10
+        \\ 
+        \hline
+        Inefficient usage of JavaScript internal APIs effects to performance
+        & 12
+        \\ 
+        \hline
+        Comparison of node.js web server with other programming language
+        & 3, 4, 5, 8, 9, 11
+        \\ 
+        \hline
+        Comparison against PHP/Apache
+        & 5
+        \\ 
+        \hline
+        Comparison against PHP
+        & 11
+        \\ 
+        \hline
+        Comparison against Nginx
+        & 5
+        \\
+        \hline
+        Comparison against .NET
+        & 3, 4
+        \\
+        \hline
+        Comparison against python
+        & 8, 11
+        \\
+        \hline
+        Comparison against rust
+        & 9
+        \\
+        \hline
+        Comparison against web assembly
+        & 9
+        \\
+        \hline
+    \end{tabular}    
+    \caption{Literature results by category.}
+    \label{table:literature:resulstByCategory}
+\end{table}
 
 \section{Sample Data}
 Performance samples were collected from the component in both environments sequentially over two month period.
