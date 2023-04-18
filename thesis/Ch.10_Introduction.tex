@@ -1,12 +1,11 @@
 \chapter{Introduction\label{intro}}
-
 In this paper we study a case where a node.js component inside a monolith application is refactored to be a part of microservice architecture.
-We are going to study if there is a difference in the components blocking events performance in these environments and if the single threaded event loop of node.js has effect to it.
-Provided results should provide insight if refactoring similar components from the monolith into microservice architecture provides performance benefits.
-Provided results are crucial to the system since the components performance is critical part of the system.
+We are going to study the difference in the components blocking events performance in these environments and how the single threaded event loop of node.js affects it.
+Results provides insight if refactoring similar components from the monolith into microservice architecture provides performance benefits.
+Provided results are crucial to the system since the components performance is critical to the system.
 
-A deeper review of node.js and the event loop is given in the background chapter.
+A deeper review of node.js and its event loop is given in the background chapter.
 In the case chapter an overview of the case architecture is given including a review of the studied component.
-Methods for collecting components response time and related literature are described in the methods chapters and their results in the following results chapter.
+Methods for collecting components performance data and related literature are described in the methods chapters and their results in the following results chapter.
 Discussion to found results and their meaning is found in the related discussion chapter.
 
