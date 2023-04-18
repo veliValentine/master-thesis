@@ -1,9 +1,11 @@
-const runFullCycle = () => {
-  const timer = new Timer();  // create new timer that capatures collected data for a cycle
+const runFullCycle = async () => {
+  // create new timer that capatures collected data for a cycle
+  const timer = new Timer();
 
-  timer.start();  // Save data point at the start
+  // Save data point at the start
+  timer.start();
 
-  const moduleAResponse = runModuleA(timer);
+  const moduleAResponse = await runModuleA(timer);
 
   runModuleB();
 
@@ -13,7 +15,9 @@ const runFullCycle = () => {
     runModuleD(moduleCResponse);
   }
 
-  timer.end() // Saves data point at the end
+  // Save data point at the end
+  timer.end()
 
-  timer.persist() // Persist data for later use
+  // Persist data points for later use
+  timer.persist()
 }

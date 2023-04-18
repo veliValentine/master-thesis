@@ -1,21 +1,20 @@
-const performAsyncOperation = async (timer) => {
-  timer.saveEvent({ // Save data point before I/O operation
+const runModuleA = async (timer) => {
+  // ...blocking code related to module A
+  
+  // Save data point before non blocking operation
+  timer.saveEvent({
     eventId: 'id ',
     before: true
   })
 
-  await asyncCode() // code that performs async I/O operation
+  // code that performs non blocking operation
+  await asyncCode()
   
-  timer.saveEvent({ // Save data point after I/O operation
+  // Save data point after non blocking operation
+  timer.saveEvent({
     eventId: 'id ',
     before: false
   })
-}
-
-const runModuleA = async (timer) => {
-  // ...blocking code related to module A
-  
-  await performAsyncOperation(timer)
 
   // ...blocking code related to module A
 
