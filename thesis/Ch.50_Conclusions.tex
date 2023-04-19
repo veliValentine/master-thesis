@@ -5,3 +5,8 @@ All non blocking calls from the component are timed and excluded from the perfor
 The component performance is measured when it is a part of a monolith application and when it is refactored into its own service.
 The component is not modified between environments.
 The components performance is critical tot he system.
+
+Selecting node.js for building performance critical components is a good choice when the components required lots of I/O operations.
+The component then should be running in microservice architecture where the services performance critical component can internally call all the related service.
+
+Being a single case study no general conclusions can be made to performance impact of refactoring a node.js component from monolith to microservice architecture.

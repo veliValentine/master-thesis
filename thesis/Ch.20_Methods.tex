@@ -1,14 +1,15 @@
 \chapter{Methods\label{methods}}
-Research methods includes defining the research question, literature review and data collection.
+In this chapter we define the research question, literature review protocol and methods for data collection.
 One research question is asked in order to answer if there is difference in server side node.js performance when it is refactored from monolith to independent service.
 Literature review is performed to find literature related to research question.
-Data collection methods provides insight related to the case and the research question.
+Methods for data collection provides insight on the collected performance data related to the research question.
 
-In order to see how the performance of node.js component differs in monolith environment and microservice environment a research question is asked.
+In order to see how the performance of node.js component differs in monolith environment and microservice environment a research question is asked:
+\begin{itemize}
+    \item \textbf{RQ1}: How does refactoring node.js component from monolith to microservice affect its performance?
+\end{itemize}
 
-\textbf{RQ1}: How does refactoring node.js component from monolith to microservice affect its performance?
-
-Answering the research question \textbf{RQ1} should give us some insight what the performance of a node.js component is as a part of a monolith environment and as a part of a microservice environment and is there any performance difference between these environments.
+Answering the research question \textbf{RQ1} should give us some insight what the performance of a node.js component is as a part of a monolith environment and as a part of a microservice environment, and is there any performance difference between these environments.
 
 \section{Literature Review}
 Literature review was performed in order to find related literature that provides insight to \textbf{RQ1}.
@@ -16,10 +17,10 @@ The review aimed to find literature related to performance of node.js applicatio
 
 The review was performed using review protocol that included four steps.
 Review protocol was defined in order to provide reproducible framework for reviewing found literature.
-The review protocol is following:
+Following protocol was used:
 \begin{enumerate}
-    \item Define the review protocol. This step defines used search engines, search string, inclusion and exclusion criteria.
-    \item Search literature following the review protocol. This step performs the search.
+    \item Define the review protocol. This step defines used search engines, search string, inclusion criteria and exclusion criteria.
+    \item Search literature following the review protocol. This step performs the search according to the step 1.
     \item Include found literature following the review protocol. This step reviews the searched literature and analyzes their relevance to \textbf{RQ1}.
     \item Exclude found literature following the review protocol. This step exclude all found literature not relevean to \textbf{RQ1}.
 \end{enumerate}
@@ -102,13 +103,13 @@ Inclusion score was the sum of points from each criterion with minimum inclusion
 \begin{table}[ht!]
     \begin{tabular}{|c c|}
         \hline
-        Description & Points \\ [0.5ex] 
+        Points & Description \\ [0.5ex] 
         \hline\hline
-         No relevance to the criterion & 0  \\ 
+         0 & No relevance to the criterion  \\ 
         
-        Some relevance to the criterion & 1 \\ 
+        1 & Some relevance to the criterion \\ 
         
-        Relevant to the criterion & 2 \\ 
+        2 & Relevant to the criterion \\ 
         \hline
     \end{tabular}
     \caption{Point system for inclusion criterion.}
@@ -118,7 +119,7 @@ Inclusion score was the sum of points from each criterion with minimum inclusion
 Exclusion of results were based on exclusion criteria seen in table \ref{table:literature:exclusionCriteria}.
 If the result matched any exclusion criterion it was excluded from the final result.
 Exclusion criteria removes all literature not relevant to the \textbf{RQ1}.
-Literature that were not available, i.e. not available for university of Helsinki student, nor in English were also excluded.
+Literature that were not available, i.e. not freely available for university of Helsinki student, nor in English were also excluded.
 
 \begin{table}[ht!]
     \begin{tabular}{|c c|} 
@@ -139,19 +140,21 @@ Literature that were not available, i.e. not available for university of Helsink
 \end{table}
 
 Final results contained 12 out of 146 related literature.
-Detailed results and review can be found in the results chapter.
+Detailed result can be found in the results chapter.
 
 \section{Collecting Sample Data}
 To measure the performance of the component a series of data points were collected along all cycles.
 The components were using real production data so it was important that the environments won't affect each other during runtime.
-The data was collected sequentially over two month period first from independent service and then from monolith.
+The data was collected sequentially over two month period first from the independent service and then from the monolith.
 
 To measured performance of the component a sample of data points were collected at run time.
 The collected data points contained timestamps in order to measure the response time of blocking code of the component, and hardware data to see if the components response time was impacted by used hardware.
-Data points were collected at the start and at the end of each cycle, and from any non blocking event as seen in examples \ref{code:modules} and \ref{code:nonNlocking}.
+Data points were collected at the start of each a cycle, at the end of each cycle, and from any non blocking event as seen in examples \ref{code:modules} and \ref{code:nonNlocking}.
 Data points were saved along a cycle and persisted at the end of the cycle.
+The non blocking code contains only I/O operations and were excluded from the components response time.
+The time it took to persist collected data points are excluded from the performance data.
 Sometimes a cycle was interrupted by an error leaving partial data to be persisted.
-Partial data were excluded from the sample analysis.
+Partial data were excluded from the final analysis.
 Single data point contained:
 \begin{enumerate}
     \item Cycle id. An unique identifier that is used for grouping collected data to single cycle.
@@ -161,14 +164,20 @@ Single data point contained:
     \item System total memory (in bytes). The total memory that the used hardware is able to provide at the collected time.
     \item Used CPU percentage. Ratio of the used CPU power over the total available CPU power at the collected time.
 \end{enumerate}
-\begin{table}
+\begin{table}[ht!]
     \lstinputlisting{code/data_sample_pseudo_code.js}
-    \caption{Pseudo code running modules.}
+    \caption{Pseudo code for running modules.
+    \\ Timer, that is responsible for collecting sample data, is created at line 3.
+    The collected data is persisted at line 22.
+    Cycles start time is saved at line 6 and end time at line 19.
+    Modules are run along lines 8-16.
+    }
     \label{code:modules}
 \end{table}
-\begin{table}
+\begin{table}[ht!]
     \lstinputlisting{code/async_time_code_example.js}
-    \caption{Pseudo code for collecting non blocking data points.}
+    \caption{Pseudo code for collecting non blocking data points.
+    \\ Data for I/O operation, in line 11, is saved at lines 5-8 and 14-17. From the collected data it is possible to calculate the response time of the I/O operation.}
     \label{code:nonNlocking}
 \end{table}
 
@@ -177,7 +186,7 @@ In order to calculate the response time of blocking code for $n$-th cycle the fo
 \textit{ResponseTime}_n
 =\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
 \]
-where $n$ is the nth cycle from samples and $m$ is the made external calls for the cycle.
+where $n$ is the $n$-th cycle from samples.
 A cycles response time $\textit{cycleResponseTime}_n$ is the difference in collected end and start timestamps for the $n$-th cycle.
 \[
 \textit{cycleResponseTime}_n=\textit{cycleEndTimestamp}_n - \textit{cycleStartTimestamp}_n
@@ -186,12 +195,5 @@ The $\textit{cycleResponseTime}_n$ contains the response time of a cycle includi
 The $\textit{externalCallResponseTimes}_n$ contains the response time of all non blocking code for the $n$-th cycle.
 \[
 \textit{externalCallResponseTimes}_n = \sum_{i=1}^{\textit{m}} (\textit{afterExternalCall}_{ni} -     \textit{beforeExternalCall}_{ni})
-,\] where $\textit{afterExternalCall}_{ni}$ is the \textit{after} timestamp for the $i$-th non blocking call in the $n$-th cycle, and the $\textit{beforeExternalCall}_{ni}$ is the \textit{before} timestamp for the $i$-th non blocking call in the $n$-th cycle.
-
-
-% \begin{gather*}
-% \textit{ResponseTime}_n
-% \\ =\textit{cycleResponseTime}_n - \textit{externalCallResponseTimes}_n
-% \\ = \textit{cycleEndTimestamp}_n - \textit{cycleStartTimestamp}_n - 
-    % \sum_{i=1}^{\textit{m}} (\textit{afterExternalCall}_{ni} -     \textit{beforeExternalCall}_{ni}),
-% \end{gather*}
+,\] where $m$ is number of non blocking request made by the $n$-th cycle,
+$\textit{afterExternalCall}_{ni}$ is the timestamp after the I/O operation for the $i$-th non blocking call in the $n$-th cycle, and the $\textit{beforeExternalCall}_{ni}$ is the timestamp before I/O operation for the $i$-th non blocking call in the $n$-th cycle.

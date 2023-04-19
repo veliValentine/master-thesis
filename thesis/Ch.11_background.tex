@@ -34,13 +34,13 @@ Node.js event loop consist of six phases shown in figure \ref{figure:nodejs:even
 Each phase consist of first in, first out queue of callbacks waiting to be executed.
 When event loop enters specific phase it performs callbacks from the queue until the queue is empty or the maximum number of events has been executed.
 After that it enters the next phase continuing the process.
-Any of these operations may schedule more operations.
+Performed callbacks may schedule more operations to queues.
 
 Poll phase performs differently when timers or \textit{setImmediate} are called as shown in the figure \ref{figure:nodejs:pollPhase}.
 Once the event loop enters the poll phase it executes all callbacks in poll queue synchronously.
 After the poll queue is emptied, and there were timers set when the event loop entered poll phase, the event loop will wrap back to timers phase to execute the timers callbacks or keep polling the empty poll queue until timer is exhausted.
 
-When no timers are scheduled when the event loop enters poll phase it executes all callbacks in the poll queue until it is empty or system limit is reached.
+When no timers are scheduled and the event loop enters poll phase it executes all callbacks in the poll queue until it is empty or system limit is reached.
 When there are scripts called by \textit{setImmediate} and the event loop ends poll phase, it enters the check phase in order to handle the \textit{setImmediate} callbacks.
 Otherwise the event loop will wait for callbacks in poll phase and executes callbacks from poll queue immediately.
 \begin{figure}[htbp]

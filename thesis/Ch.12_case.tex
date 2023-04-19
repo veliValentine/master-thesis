@@ -1,14 +1,14 @@
 \chapter{The Case\label{case}}
 
 \section{Architecture}
-The studied application was build following monolith architecture with three tier pattern containing frontend, backend and database.
+The studied application was build following monolith architecture with three tier pattern containing frontend, backend and database as seen in figure \ref{figure:architecture:monolith}.
 The backend was written using node.js version v14.19.1 that uses V8 engine version \textit{8.4.371.23-node.85}.
 The backend contains multiple independent components each with its own purpose.
 One of the components were refactored out of the monolith application into the independent service.
-
-The independent service contained an application interface to allow communication to the component and the component itself.
-The independent service was build using node.js with version v14.18.3 that uses V8 engine version \textit{8.4.371.23-node.85}.
 The architecture before and after refactoring can be seen in figures \ref{figure:architecture:monolith} and \ref{figure:architecture:independent_service}.
+
+The independent service, shown in figure \ref{figure:architecture:independent_service}, contained an application interface to allow communication to the component and the component itself.
+The independent service was build using node.js with version v14.18.3 that uses V8 engine version \textit{8.4.371.23-node.85}.
 
 \begin{figure}
     \includegraphics[width=\textwidth]{images/monolith_architecture.png}
@@ -56,17 +56,18 @@ The use of production environment didn't allow to utilize same resources for bot
 
 \section{Overview of the Component}
 The component was written using JavaScript with node.js runtime environment.
-The component runs in cycles where one cycle contains two to four tasks.
-After a cycle is finished the component decides if it start new cycle.
+The component runs in cycles.
+After a cycle is finished the component decides if it starts a new cycle.
 The cycles keeps running until user interrupts the cycles or and error stops the process.
 
-The component is divided into four modules each handling one of the four task.
-Each task is represented by its own module and each module is run sequentially one after the other
-all of the modules response time is critical to the system.
+A cycle performs two to four task.
+Each task is represented by its own module and each module is run sequentially one after the other.
+A code example \ref{code:modules} describes how the modules are called.
+All of the modules response time is critical to the system.
 \begin{itemize}
     \item
     \textbf{Module A} is the first module in the cycle.
-    It is always called when the cycles are running.
+    It is always called when the cycles are running. Its response is dependent on the external data and can not be controlled in production environment.
     
     \item
     \textbf{Module B} is the second module in the cycle.
@@ -104,6 +105,6 @@ The flowchart of the modules are shown in figure \ref{figure:module:flow}.
 When any of the modules fails to perform its task an error is raised and the cycle is interrupted.
 Error at any point of the cycles requires manual restart from the user.
 When modules are running without errors the modules A and B are always performed. 
-The modules C and D are run only when the data from module A requires them to run.
+The modules C and D are run only when the response from module A requires them to run.
 Each module waits for the response of external calls before continuing their process.
 A full cycle requires successful run from all four modules.

@@ -1,10 +1,10 @@
 \chapter{Results\label{results}}
-The performed literature review results and the collected data analysis is described in this chapter.
+The performed literature review results and the collected data analysis are described in this chapter.
 
 \section{Literature Review}
 Literature review was performed to find related literature to \textbf{RQ1}.
-Review used four search engines that provided 147 initial results when using defined search string.
-From the 147 initial search results 93 were unique.
+Review used four search engines that provided 147 search hits when using defined search string.
+From the 147 search hits 93 were unique.
 \begin{table}[ht!]
     \begin{tabular}{|c c|} 
         \hline
@@ -33,79 +33,90 @@ From the 147 initial search results 93 were unique.
         \\ 
         \hline
     \end{tabular}    
-    \caption{Initial search results of related literature}
+    \caption{Initial search results for literature review.}
     \label{table:literature:initialSearchResults}
 \end{table}
-Search results title and abstract was reviewed against inclusion criteria.
-Highest score received was 8 out of 14 for three unique results and lowest score 0 out of 14 for 24 unique results.
+Searched literatures title and abstract was reviewed against inclusion criteria.
+Highest inclusion score received was 8 for 3 unique results and lowest score 0 for 24 unique results.
 Three results didn't have an abstract to review so they were excluded from the review at this point.
-Table \ref{table:literature:inclusionResults} shows inclusion score among initial search results.
+Table \ref{table:literature:inclusionResults} shows inclusion score among searched literature.
 \begin{table}[ht!]
-    \begin{tabular}{|c c c c|} 
+    \begin{tabular}{|c c c c c|} 
         \hline
         Inclusion Score
         & Count (n)
         & Unique Count (n)
+        & Included Count (n)
         & Included Literature Id
         \\ 
         \hline\hline
-        Score 8/14
+        Score 8
         & 7
+        & 3
         & 3
         & 1, 2, 3
         \\ 
         
-        Score 7/14
+        Score 7
         & 4
         & 2
+        & 0
         & All excluded
         \\ 
         
-        Score 6/14
+        Score 6
         & 4
         & 4
+        & 1
         & 4
         \\ 
         
-        Score 5/14
+        Score 5
         & 16
         & 8
+        & 4
         & 5, 6, 7, 8
         \\ 
         
-        Score 4/14
+        Score 4
         & 17
         & 11
+        & 4
         & 9, 10, 11, 12
         \\ 
         
-        Score 3/14
+        Score 3
         & 23
         & 14
+        & 0
         & All excluded
         \\ 
         
-        Score 2/14
+        Score 2
         & 36
         & 20
+        & 0
         & All excluded
         \\ 
         
-        Score 1/14
+        Score 1
         & 9
         & 4
+        & 0
         & All excluded
         \\ 
         
-        Score 0/14
+        Score 0
         & 28
         & 24
+        & 0
         & All excluded
         \\ 
         
         Not available
         & 3
         & 3
+        & 0
         & Not included
         \\ 
         \hline
@@ -113,17 +124,19 @@ Table \ref{table:literature:inclusionResults} shows inclusion score among initia
         & 147
         & 93
         & 12
+        & -
         \\ 
         \hline
     \end{tabular}    
-    \caption{Literature inclusion scores}
+    \caption{Literature inclusion scores.
+    \\Literature with inclusion less than 3.5 were automatically excluded. Results with inclusion score more that 3.5 were review against exclusion criteria.}
     \label{table:literature:inclusionResults}
 \end{table}
 After excluding results with inclusion score less than 3.5 a total of 28 unique results were review.
 Out of the 28 included results 16 were excluded based on exclusion criteria leaving a total of 12 results relevant to \textbf{RQ1} as shown in table \ref{table:literature:results}.
 As shown in table \ref{table:literature:resulstByCategory} most of the found literature, $50\%$, compares node.js web server with other programming languages like .net, python and PHP.
 One results studied performance impact when monolith application was migrated to microservice.
-Other study studied the performance impact of JavaScript API with different JavaScript engines.
+Other studied the performance impact of JavaScript API with different JavaScript engines.
 
 \begin{table}[ht!]
     \begin{tabular}{|c c |} 
@@ -272,7 +285,7 @@ The results for monolith are shown in table \ref{table:hardware results:monolith
 In the monolith environment $206965$ hardware samples was collected from $1649$ full cycles.
 From the independent service a total of $26902$ hardware samples was collected from $205$ full cycles.
 The hardware samples were collected along response time timestamps.
-Hardware samples only reflects the systems CPU utilization and memory usage at the point of the timestamp collection and not the status during any meaningful process in the component.
+Hardware samples only reflects the systems CPU utilization and memory usage at the point of the data point collection and not the status during any meaningful process in the component.
 
 \begin{table}[ht!]
     \begin{tabular}{|c c c c|} 
@@ -304,7 +317,8 @@ Hardware samples only reflects the systems CPU utilization and memory usage at t
         & 64.265863... \\
         \hline
     \end{tabular}
-    \caption{Hardware Utilization - Monolith $n=206 965$}
+    \caption{Hardware Utilization in Monolith environment.
+    \\ Sample size $n=206 965$}
     \label{table:hardware results:monolith:1}
 \end{table}
 
@@ -328,14 +342,14 @@ Minimum available memory was calculated with the following formula:
 \textit{Minimum available memory} = 100 \cdot \frac{\textit{Minimum free memory}}{\textit{Maximum total memory}}
 .\]
 It is possible that the system would run out of memory.
-Out of memory cycles are not shown in samples since the system would raise \textit{out of memory} exception.
+They are not shown in samples since the system would raise \textit{out of memory} exception.
 The collected memory samples doesn't show out of memory errors since error cases were excluded from the analysis.
 The mean available memory was around $11.807...\%$ in monolith and $66.121...\%$ in independent service leaving plenty of memory available for the application use in the collected samples.
 
 \subsubsection{Response Time Samples}
-Timestamp samples were collected from both environments to measure the response time of the component.
+Timestamp were collected from both environments to measure the response time of the component.
 The results are shown in tables \ref{table:response time results:1}, \ref{table:response time results:2} and \ref{table:response time results:3}.
-Start and end timestamps of each cycle were collected along the timestamps before and after all external calls made from the component.
+Start and end timestamps of each cycle were collected along the timestamps before and after all I/O calls made from the component.
 
 Collected samples contained $1649$ full cycles from monolith environment with mean response time of $\sim198.7$ms.
 The mean value was $\sim2.48$ times slower against the minimum value of $\sim 80.2$ms and $\sim5.94$ times faster when compared to the maximum value of $\sim1180.6$ms in the monolith environment.
@@ -406,6 +420,12 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
         & 88.404872
         \\
         \hline
+        Ratio $\frac{\text{Monolith}}{\text{Independent Service}}$
+        & 8.043902...
+        & 1.872027...
+        & 2.087248...
+        \\
+        \hline
     \end{tabular}
     \caption{Results for response time samples. Timestamps are in milliseconds.}
     \label{table:response time results:1}
@@ -427,6 +447,11 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
         Independent Service
         & 33.763860
         & 403.937152
+        \\
+        \hline
+        Ratio $\frac{\text{Monolith}}{\text{Independent Service}}$
+        & 2.375365...
+        & 2.922837...
         \\
         \hline
     \end{tabular}
@@ -452,18 +477,22 @@ The minimum value in the monolith was $\sim 66.63$ percentage points greater tha
         & $5.405272... \cdot 10^6$
         \\ 
          \hline
+        Ratio $\frac{\text{Monolith}}{\text{Independent Service}}$
+        & 1.103598...
+        & 0.389115...
+        \\
+        \hline
     \end{tabular}
     \caption{Results for response time samples. Timestamps are in nanoseconds.}
     \label{table:response time results:3}
 \end{table}
 
-\subsubsection{Sample Results}
-The component performance was not limited by the hardware according to the collected hardware sample.
-Most of the systems CPU was unused and average of at least $11.8\%$ free memory was available for the systems to use.
+\subsubsection{Performance Sample Results}
+The component performance was not limited by the hardware according to the collected hardware samples.
+Most of the systems CPU was unused, and on average at least $11.8\%$ free memory was available for the systems to use.
 
 The response time being $\sim 1.87$ times faster in independent service when compared to monolith environment.
 Overall it seems that the components performance in independent service is better when compared to the component performance in monolith.
 
 Collected samples were affected by the runtime condition since the data was collected from production environments.
 Collected sample sizes differs by over a thousand sample because only full cycles were included in the analysis.
-The data doesn't show how often the component was not running due the required user input for restarts.
