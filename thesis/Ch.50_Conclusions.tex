@@ -1,12 +1,15 @@
 \chapter{Conclusions\label{conclusions}}
-This research studies performance of a server side JavaScript software component.
-Performance is defined as the time the component takes to processing its blocking events.
-All non blocking calls from the component are timed and excluded from the performance review in order to capture the response time of all blocking events in the component.
-The component performance is measured when it is a part of a monolith application and when it is refactored into its own service.
-The component is not modified between environments.
-The components performance is critical tot he system.
+This research studied performance of a server side JavaScript component.
+Performance was defined as the time the component takes to processing its blocking events.
+All non blocking calls from the component were timed and excluded from the performance review in order to capture the response time of all blocking events in the component.
+It was noted that the components response time was reduced by $~92.6$ms when it was refactored from monolith environment into independent service.
+In the monolith environment the JavaScript event loop may have been exhausted by all the code not related to studied component reducing its performance.
+Other reason for the performance improvement might be because in the monolith environment it is possible that the application contained blocking code that affected the event loop performance to handle events slowing down the studied component.
+Usually refactoring component into microservice architecture adds network overhead that reduces the overall performance.
+For the studied components performance the added network overhead was excluded since it was not important for the component.
 
 Selecting node.js for building performance critical components is a good choice when the components required lots of I/O operations.
-The component then should be running in microservice architecture where the services performance critical component can internally call all the related service.
+For achieving highest possible performance for the component it should be the only component in the node.js environment.
+Otherwise bad coding practises, like writing blocking JavaScript, affects the performance critical component since they share the node.js event loop.
 
-Being a single case study no general conclusions can be made to performance impact of refactoring a node.js component from monolith to microservice architecture.
+Being a single case study no general conclusions can be made for performance impact of refactoring a node.js component from monolith to microservice architecture.
