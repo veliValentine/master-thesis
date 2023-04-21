@@ -3,7 +3,7 @@ Node.js is a asynchronous event-driven JavaScript runtime environment that is de
 In its core process it uses event loop at runtime to handle callbacks.
 Node.js is internally compiled by V8 JavaScript engine using just in time complication (\cite{nodejsTheV8}).
 
-Node.js uses small number of threads to handle many clients rather than using hardware resources for maintaining multiple threads (\cite{node.jsOverviewBlockVsNonBlock}).
+Node.js uses one thread to handle many clients rather than using hardware resources for maintaining multiple threads (\cite{node.jsOverviewBlockVsNonBlock}).
 Node.js is able to perform blocking I/O event within a single runtime thread by offloading operations to system kernel when possible (\cite{node.jsEventLoop}).
 These operations are called non-blocking operations or asynchronous operations (\cite{node.jsOverviewBlockVsNonBlock}).
 Events that block the event loop from continuing its process are called blocking operations or synchronous operations.
