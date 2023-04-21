@@ -12,13 +12,19 @@
 
 \begin{otherlanguage}{english}
 \begin{abstract}
-Description of the research.
+A case study that studied the performance impact of a node.js component when it was refactored from monolith environment into independent service.
+The performance study studied the response time of the blocking part of JavaScript code in the component.
+The non blocking part of the code and the added network overhead from the refactoring were excluded from the performance review.
 
-Previous works.
+Literature review didn't show any related research that studied the performance impact of a node.js component when it was refactored from monolith into microservices.
+Many found studies were found that studied the response time and throughput of REST API build with node.js with comparisons to other programming languages.
+A study were found that related to refactoring an application from monolith into microservices.
+None of the found studies were directly related to the studied case.
 
-Our findings.
+It was noted that the response time of the component improved by $46.5\%$ when it was refactored from monolith into microservice.
+It is possible that when a node.js monolith application grows it starts to affect the throughput of the event loop affecting performance critical components.
+For the case component it was beneficial to refactor it into independent service in order to gain the $92.6$ms in the mean response time.
 
-Summary of result.
 
 \end{abstract}
 \end{otherlanguage}

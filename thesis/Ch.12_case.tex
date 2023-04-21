@@ -7,7 +7,7 @@ The backend contains multiple independent components each with its own purpose.
 One of the components were refactored out of the monolith application into the independent service.
 The architecture before and after refactoring can be seen in figures \ref{figure:architecture:monolith} and \ref{figure:architecture:independent_service}.
 
-The independent service, shown in figure \ref{figure:architecture:independent_service}, contained an application interface to allow communication to the component and the component itself.
+The independent service, shown in figure \ref{figure:architecture:independent_service}, contained an application interface to allow communication with the component and the component itself.
 The independent service was build using node.js with version v14.18.3 that uses V8 engine version \textit{8.4.371.23-node.85}.
 
 \begin{figure}
@@ -58,7 +58,7 @@ The use of production environment didn't allow to utilize same resources for bot
 The component was written using JavaScript with node.js runtime environment.
 The component runs in cycles.
 After a cycle is finished the component decides if it starts a new cycle.
-The cycles keeps running until user interrupts the cycles or and error stops the process.
+The cycles keeps running until user interrupts the cycles or and error stops the cycles.
 
 A cycle performs two to four task.
 Each task is represented by its own module and each module is run sequentially one after the other.
@@ -76,11 +76,11 @@ All of the modules response time is critical to the system.
     \item
     \textbf{Module C} is the third module in the cycle.
     It runs after \textbf{module B} only when the response from \textbf{module A} requires it to run.
-    Otherwise rest of the modules in the cycle are skipped and the cycle restarts from \textbf{module A}.
+    Otherwise rest of the modules in the cycle are skipped and a new cycle is started from \textbf{module A}.
 
     \item
     \textbf{Module D} is the last module in the cycle.
-    After it is finished the cycle is restarted from \textbf{module A}.
+    After it is finished a new cycle is started from \textbf{module A}.
 \end{itemize}
 
 The components is dependent on the input parameters that decides when the component can continue the cycles.
