@@ -1,9 +1,12 @@
 \chapter{Discussion\label{discussion}}
-Node.js is an event driven JavaScript runtime environment that handles events in event loop.
+Node.js is an event driven JavaScript runtime environment that handles events in the event loop.
 The event loop can be blocked in couple of ways.
 Allowing JavaScript performing I/O operations instead of offloading these event to kernel is a sure way to block the event loop.
 Another way for blocking the event loop is to perform complex callbacks synchronously.
 JavaScript being one threaded event driven programming language it is unable to release the occupied thread to allow concurrent operations.
+
+All I/O operations in the monolith application that were offloaded to system kernel are added to the same poll queue once kernel has processed the request.
+It is possible that while the event loop handles the offloaded processes in the poll phase related to the studied component there are other events added to the poll queue related to other components in the monolith.
 
 \cite{SelakovicPerformanceIssues} studied the common performance issues that open source JavaScript programs have.
 They found many ways to optimize JavaScript performance by using build in JavaScript functions more efficiently.
@@ -38,9 +41,9 @@ The benefits of refactoring the modular monolith into microservices included mor
 The collected response time samples showed that the response time improved when the studied component was refactored from the monolith into independent service.
 Further refactoring the studied component into more fine-grained services would affect its performance by increasing the network overhead for communicating with the more fine-grained services.
 The components performance was not affected by the added network overhead since the overhead is related to applications performance, not the components.
-The overall performance of the application probably was increased by the added network overhead but it didn't affect the studied components performance.
+The overall performance of the application probably was decreased by the added network overhead but it didn't affect the studied components performance.
 
-Answering \textbf{RQ1} "How does refactoring node.js component from monolith to microservice affect its performance?" we can say that the response time is decreases by $46.5\%$ when the component runs in independent service.
+Answering \textbf{RQ1} "How does refactoring node.js component from monolith to microservice affect its performance?" we can say that the response time is decrease by $46.5\%$ when the component runs in independent service.
 Refactoring component to independent service isolates the component from the monolith environment allowing it to use all the available resources to handle related events in its own event loop.
 In monolith environment it is possible that once the event loop enter poll phase it handles offloaded I/O operations for the whole system.
 In independent system the poll phase is responsible for handling offloaded I/O operations only for the critical component.
@@ -66,4 +69,4 @@ This can be achieved by performing an controlled experiment where components are
 For the case application it would be beneficial to measure the response time of other components in the monolith and see if the refactoring has same effect for them.
 Then it would be possible to eliminate  performance issues related to possible bad JavaScript code practises that affects the event loops throughput.
 No related studies were found where the components response time was measured when the components runtime environment changed from monolith into microservice.
-It would be interesting to see if the found results are node.js related or can the results be reproduced in other programming languages and environments.
+It would be interesting to see if the found results are node.js related or can they be reproduced in other programming languages and environments.
